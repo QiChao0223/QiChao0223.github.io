@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>c++primer学习记录</title>
+    <link href="/2023/12/11/c-primer%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    <url>/2023/12/11/c-primer%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</url>
+    
+    <content type="html"><![CDATA[<h3 id="复合类型">复合类型</h3><p><strong>compoundtype</strong>，基于其他类型定义的类型，包括<strong>引用</strong>和<strong>指针</strong></p><h4 id="引用">引用</h4><p>引用为对象起了另外一个名字，引用类型<strong><code>引用</code></strong>（referto）另外一种类型。</p><p>定义引用类型：<span class="math inline">\(\&amp;d\)</span> ，其中<span class="math inline">\(d\)</span> 是声明的变量名</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">int</span> ival = <span class="hljs-number">1024</span>;<br><span class="hljs-type">int</span> &amp;refval = ival; <span class="hljs-comment">// refval 指向ival，是ival的另一个名字</span><br><span class="hljs-type">int</span> &amp;refval2;<span class="hljs-comment">// 错误， 引用必须被初始化</span><br></code></pre></td></tr></table></figure><h4 id="指针">指针</h4><p><code>指向</code>另外一种类型的复合类型。与引用类似，指针实现了对其它对象的间接访问</p><h4 id="引用和指针的不同点">引用和指针的不同点</h4><ul><li>指针本身就是一个对象，允许对指针赋值和拷贝，在指针的生命周期内它可以指向几个不同的对象</li><li>指针无需在定义时赋初值；和其它内置类型一样，在块作用域内定义的指针如果没有被初始化，也将拥有一个不确定的值</li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>c++</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>code习惯记录</title>
     <link href="/2023/12/09/code%E4%B9%A0%E6%83%AF%E8%AE%B0%E5%BD%95/"/>
     <url>/2023/12/09/code%E4%B9%A0%E6%83%AF%E8%AE%B0%E5%BD%95/</url>

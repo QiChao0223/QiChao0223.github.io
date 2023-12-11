@@ -16,22 +16,22 @@
   <meta name="author" content="Kinest">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一些写c&#x2F;cpp的习惯记录">
+    <meta name="description" content="复合类型 compound type，基于其他类型定义的类型，包括引用和指针 引用 引用为对象起了另外一个名字，引用类型引用（refer to）另外一种类型。 定义引用类型：\(\&amp;d\) ，其中 \(d\) 是声明的变量名 123int ival &#x3D; 1024;int &amp;refval &#x3D; ival; &#x2F;&#x2F; refval 指向ival，是ival的另一个名字int">
 <meta property="og:type" content="article">
-<meta property="og:title" content="code习惯记录">
-<meta property="og:url" content="https://qichao0223.github.io/2023/12/09/code%E4%B9%A0%E6%83%AF%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:title" content="c++primer学习记录">
+<meta property="og:url" content="https://qichao0223.github.io/2023/12/11/c-primer%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="一些写c&#x2F;cpp的习惯记录">
+<meta property="og:description" content="复合类型 compound type，基于其他类型定义的类型，包括引用和指针 引用 引用为对象起了另外一个名字，引用类型引用（refer to）另外一种类型。 定义引用类型：\(\&amp;d\) ，其中 \(d\) 是声明的变量名 123int ival &#x3D; 1024;int &amp;refval &#x3D; ival; &#x2F;&#x2F; refval 指向ival，是ival的另一个名字int">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-12-09T14:49:38.000Z">
-<meta property="article:modified_time" content="2023-12-09T14:52:58.877Z">
+<meta property="article:published_time" content="2023-12-11T04:51:58.000Z">
+<meta property="article:modified_time" content="2023-12-11T05:06:45.427Z">
 <meta property="article:author" content="Kinest">
-<meta property="article:tag" content="code">
+<meta property="article:tag" content="c++">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>code习惯记录 - Hexo</title>
+  <title>c++primer学习记录 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -173,7 +173,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="code习惯记录"></span>
+            <span id="subtitle" data-typed-text="c++primer学习记录"></span>
           
         </div>
 
@@ -184,8 +184,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-09 22:49" pubdate>
-          2023年12月9日 晚上
+        <time datetime="2023-12-11 12:51" pubdate>
+          2023年12月11日 下午
         </time>
       </span>
     
@@ -196,7 +196,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          42 字
+          218 字
         
       </span>
     
@@ -207,7 +207,7 @@
         
         
         
-          1 分钟
+          2 分钟
         
       </span>
     
@@ -244,15 +244,27 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">code习惯记录</h1>
+            <h1 id="seo-header">c++primer学习记录</h1>
             
             
               <div class="markdown-body">
                 
-                <p>一些写c/cpp的习惯记录</p>
-<span id="more"></span>
-<h3 id="头文件顺序">头文件顺序</h3>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-bullet">- </span>源文件对应的头文件<br><span class="hljs-bullet">- </span>C标准库<br><span class="hljs-bullet">- </span>C++标准库<br><span class="hljs-bullet">- </span>其它库的头文件<br><span class="hljs-bullet">- </span>本工程的头文件<br></code></pre></td></tr></table></figure>
+                <h3 id="复合类型">复合类型</h3>
+<p><strong>compound
+type</strong>，基于其他类型定义的类型，包括<strong>引用</strong>和<strong>指针</strong></p>
+<h4 id="引用">引用</h4>
+<p>引用为对象起了另外一个名字，引用类型<strong><code>引用</code></strong>（refer
+to）另外一种类型。</p>
+<p>定义引用类型：<span class="math inline">\(\&amp;d\)</span> ，其中
+<span class="math inline">\(d\)</span> 是声明的变量名</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">int</span> ival = <span class="hljs-number">1024</span>;<br><span class="hljs-type">int</span> &amp;refval = ival; <span class="hljs-comment">// refval 指向ival，是ival的另一个名字</span><br><span class="hljs-type">int</span> &amp;refval2;		<span class="hljs-comment">// 错误， 引用必须被初始化</span><br></code></pre></td></tr></table></figure>
+<h4 id="指针">指针</h4>
+<p><code>指向</code>另外一种类型的复合类型。与引用类似，指针实现了对其它对象的间接访问</p>
+<h4 id="引用和指针的不同点">引用和指针的不同点</h4>
+<ul>
+<li>指针本身就是一个对象，允许对指针赋值和拷贝，在指针的生命周期内它可以指向几个不同的对象</li>
+<li>指针无需在定义时赋初值；和其它内置类型一样，在块作用域内定义的指针如果没有被初始化，也将拥有一个不确定的值</li>
+</ul>
 
                 
               </div>
@@ -265,7 +277,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/code/" class="print-no-link">#code</a>
+        <a href="/tags/c/" class="print-no-link">#c++</a>
       
     </div>
   
@@ -277,8 +289,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>code习惯记录</div>
-      <div>https://qichao0223.github.io/2023/12/09/code习惯记录/</div>
+      <div>c++primer学习记录</div>
+      <div>https://qichao0223.github.io/2023/12/11/c-primer学习记录/</div>
     </div>
     <div class="license-meta">
       
@@ -290,7 +302,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年12月9日</div>
+          <div>2023年12月11日</div>
         </div>
       
       
@@ -322,18 +334,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/11/c-primer%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" title="c++primer学习记录">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">c++primer学习记录</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/08/mpc/" title="mpc">
-                        <span class="hidden-mobile">mpc</span>
+                      <a href="/2023/12/09/code%E4%B9%A0%E6%83%AF%E8%AE%B0%E5%BD%95/" title="code习惯记录">
+                        <span class="hidden-mobile">code习惯记录</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
