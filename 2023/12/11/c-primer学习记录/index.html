@@ -16,18 +16,21 @@
   <meta name="author" content="Kinest">
   <meta name="keywords" content="">
   
-    <meta name="description" content="复合类型 compound type，基于其他类型定义的类型，包括引用和指针 引用 引用为对象起了另外一个名字，引用类型引用（refer to）另外一种类型。 定义引用类型：\(\&amp;d\) ，其中 \(d\) 是声明的变量名 123int ival &#x3D; 1024;int &amp;refval &#x3D; ival; &#x2F;&#x2F; refval 指向ival，是ival的另一个名字int">
+    <meta name="description" content="一些关于阅读c++primer这本书的记录">
 <meta property="og:type" content="article">
 <meta property="og:title" content="c++primer学习记录">
 <meta property="og:url" content="https://qichao0223.github.io/2023/12/11/c-primer%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="复合类型 compound type，基于其他类型定义的类型，包括引用和指针 引用 引用为对象起了另外一个名字，引用类型引用（refer to）另外一种类型。 定义引用类型：\(\&amp;d\) ，其中 \(d\) 是声明的变量名 123int ival &#x3D; 1024;int &amp;refval &#x3D; ival; &#x2F;&#x2F; refval 指向ival，是ival的另一个名字int">
+<meta property="og:description" content="一些关于阅读c++primer这本书的记录">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20231211224135934.png">
+<meta property="og:image" content="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20231211224420467.png">
 <meta property="article:published_time" content="2023-12-11T04:51:58.000Z">
-<meta property="article:modified_time" content="2023-12-11T05:06:45.427Z">
+<meta property="article:modified_time" content="2023-12-11T15:18:13.148Z">
 <meta property="article:author" content="Kinest">
 <meta property="article:tag" content="c++">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20231211224135934.png">
   
   
   
@@ -196,7 +199,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          218 字
+          1k 字
         
       </span>
     
@@ -207,7 +210,7 @@
         
         
         
-          2 分钟
+          9 分钟
         
       </span>
     
@@ -249,7 +252,10 @@
             
               <div class="markdown-body">
                 
-                <h3 id="复合类型">复合类型</h3>
+                <p>一些关于阅读c++primer这本书的记录</p>
+<span id="more"></span>
+<h2 id="第二章">第二章</h2>
+<h3 id="复合类型">复合类型</h3>
 <p><strong>compound
 type</strong>，基于其他类型定义的类型，包括<strong>引用</strong>和<strong>指针</strong></p>
 <h4 id="引用">引用</h4>
@@ -260,11 +266,70 @@ to）另外一种类型。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">int</span> ival = <span class="hljs-number">1024</span>;<br><span class="hljs-type">int</span> &amp;refval = ival; <span class="hljs-comment">// refval 指向ival，是ival的另一个名字</span><br><span class="hljs-type">int</span> &amp;refval2;		<span class="hljs-comment">// 错误， 引用必须被初始化</span><br></code></pre></td></tr></table></figure>
 <h4 id="指针">指针</h4>
 <p><code>指向</code>另外一种类型的复合类型。与引用类似，指针实现了对其它对象的间接访问</p>
+<p><strong>定义指针类型</strong>： <span
+class="math inline">\(*d\)</span> 其中 <span
+class="math inline">\(d\)</span> 是变量名</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">int</span> *ip1, *ip2;  <span class="hljs-comment">//ip1、ip2都是指向int型对象的指针</span><br><span class="hljs-type">double</span> dp, *dp2; <span class="hljs-comment">//dp是double型对象，dp2是指向double型对象的指针</span><br></code></pre></td></tr></table></figure>
+<p><strong>获取对象的地址</strong>：指针存放某个对象的地址，使用
+<strong>取地址符<span class="math inline">\(\&amp;\)</span></strong>
+获取该地址</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">int</span> ival = <span class="hljs-number">43</span>;<br><span class="hljs-type">int</span> *p = &amp;ival; <span class="hljs-comment">// p 存放变量ival的地址，p是指向变量ival的指针</span><br></code></pre></td></tr></table></figure>
+<p><strong>指针值</strong>：指针的值即<strong>地址</strong>，应属于下列四种状态之一</p>
+<ul>
+<li>指向一个对象</li>
+<li>指向紧邻对象所占空间的下一个位置</li>
+<li>空指针，意味着指针没有指向任何对象</li>
+<li>无效指针，也就是上述情况之外的其他值</li>
+</ul>
+<p><strong>利用指针来访问对象</strong>：使用解引符 <span
+class="math inline">\(*\)</span> 来访问对象</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">int</span> ival = <span class="hljs-number">43</span>;<br><span class="hljs-type">int</span> *p = &amp;ival; <span class="hljs-comment">// p存放变量ival的地址；p是指向变量ival的指针</span><br>cout &lt;&lt; *p; 	<span class="hljs-comment">// 输出43</span><br>*p = <span class="hljs-number">0</span>;			<span class="hljs-comment">// 给解引用的结果赋值，也就是给指针所指向的对象赋值</span><br>cout &lt;&lt; *p<br></code></pre></td></tr></table></figure>
+<figure>
+<img
+src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20231211221201032.png" srcset="/img/loading.gif" lazyload
+alt="image-20231211221201032" />
+<figcaption aria-hidden="true">image-20231211221201032</figcaption>
+</figure>
+<figure>
+<img
+src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20231211221219575.png" srcset="/img/loading.gif" lazyload
+alt="image-20231211221219575" />
+<figcaption aria-hidden="true">image-20231211221219575</figcaption>
+</figure>
+<p><strong>多重含义</strong>：<span
+class="math inline">\(\&amp;\)</span> 和 <span
+class="math inline">\(*\)</span>
+既能用作表达式的运算符，也能作为声明的一部分出现，符号的上下文决定了符号的意义</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">int</span> i = <span class="hljs-number">43</span>；<br><span class="hljs-type">int</span> &amp;r = i; <span class="hljs-comment">// &amp;紧随类型名出现，因此是声明的一部分，r是一个引用</span><br><span class="hljs-type">int</span> *p;		<span class="hljs-comment">// *紧随类型名出现，因此是声明的一部分，p是一个指针</span><br>p = &amp;r;		<span class="hljs-comment">// &amp;出现在表达式中，是一个取地址符</span><br>*p = i;		<span class="hljs-comment">// *出现在表达式中，是一个解引用</span><br><span class="hljs-type">int</span> &amp;r2 = *p;<span class="hljs-comment">//&amp;是声明的一部分，*是一个解引用符</span><br></code></pre></td></tr></table></figure>
+<p><strong>空指针</strong>：不指向任何对象，在使用之前需要检查是否为空</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp">生成空指针：<br><span class="hljs-type">int</span> *p = <span class="hljs-literal">nullptr</span>;	<span class="hljs-comment">// 等价于 int *p = 0</span><br><span class="hljs-type">int</span> *p2 = <span class="hljs-number">0</span>;		<span class="hljs-comment">// 直接将p2初始化为字面常量0</span><br><span class="hljs-type">int</span> *p3 = <span class="hljs-literal">NULL</span>;		<span class="hljs-comment">// 需要include cstdlib</span><br></code></pre></td></tr></table></figure>
+<h4 id="赋值和指针">赋值和指针</h4>
+<p>赋值和指针都能提供对其他对象的间接访问，引用本身并非一个对象，一旦定义了引用，就无法令其再绑定到另外的对象，之后每次使用这个引用都是访问它最初绑定的那个对象。指针和它存放的地址就没有这种限制。和其他任何变量（不包括引用）一样，给指针赋值就是令它存放一个新的地址，从而指向一个新的对象。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">int</span> i = <span class="hljs-number">32</span>;<br><span class="hljs-type">int</span> *p = <span class="hljs-number">0</span>;<br><span class="hljs-type">int</span> *pi2  = &amp;i;	<span class="hljs-comment">// pi2被初始化，指向变量i的地址</span><br><span class="hljs-type">int</span> *pi3;		<span class="hljs-comment">// 无法确定pi3的值</span><br>pi3 = pi2;  	<span class="hljs-comment">// pi2、pi3指向同一个对象</span><br>pi2 = <span class="hljs-number">0</span>;		<span class="hljs-comment">// pi2 不指向任何对象了</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20231211224135934.png" srcset="/img/loading.gif" lazyload alt="image-20231211224135934" style="zoom:67%;" /></p>
+<p>==赋值永远改变的是等号 左侧的对象==</p>
+<p><img src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20231211224420467.png" srcset="/img/loading.gif" lazyload alt="image-20231211224420467" style="zoom: 67%;" /></p>
+<p>**void*指针**：一种特殊类型的指针，可用于存放任意对象的地址</p>
+<p><strong>指向指针的指针</strong>：通过<span
+class="math inline">\(*\)</span> 的个数可以区分指针的级别</p>
+<figure>
+<img
+src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20231211230913778.png" srcset="/img/loading.gif" lazyload
+alt="image-20231211230913778" />
+<figcaption aria-hidden="true">image-20231211230913778</figcaption>
+</figure>
+<p><strong>指向指针的引用</strong>：引用本身不是一个对象，因此不能定义指向引用的指针，但是指针是对象，所以存在对指针的引用</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">int</span> i = <span class="hljs-number">43</span>;<br><span class="hljs-type">int</span> *p;		 <span class="hljs-comment">// p是一个int型指针</span><br><span class="hljs-type">int</span> <span class="hljs-number">8</span>&amp;r = p; <span class="hljs-comment">// r是一个对指针的引用</span><br>r = &amp;i;		<span class="hljs-comment">// r引用了一个指针，因此给r赋值就是令p指向i</span><br>*r= <span class="hljs-number">0</span>;		<span class="hljs-comment">// 解引用r得到i，也就是p指向的对象，将i的值改为0</span><br></code></pre></td></tr></table></figure>
 <h4 id="引用和指针的不同点">引用和指针的不同点</h4>
 <ul>
 <li>指针本身就是一个对象，允许对指针赋值和拷贝，在指针的生命周期内它可以指向几个不同的对象</li>
 <li>指针无需在定义时赋初值；和其它内置类型一样，在块作用域内定义的指针如果没有被初始化，也将拥有一个不确定的值</li>
 </ul>
+<h3 id="const限定符">const限定符</h3>
+<p>默认状态下，const对象尽在文件内有效</p>
+<h4 id="const的引用">const的引用</h4>
+<p>可以把引用绑定到const对象上，就像绑定其他对象一样，称之为<strong>对常量的引用</strong>（reference
+to const）。对常量的引用不能被用作修改它所绑定的对象。</p>
 
                 
               </div>
