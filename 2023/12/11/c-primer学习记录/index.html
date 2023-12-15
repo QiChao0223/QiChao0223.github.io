@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20231211224135934.png">
 <meta property="og:image" content="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20231211224420467.png">
 <meta property="article:published_time" content="2023-12-11T04:51:58.000Z">
-<meta property="article:modified_time" content="2023-12-11T15:35:42.732Z">
+<meta property="article:modified_time" content="2023-12-15T04:54:20.048Z">
 <meta property="article:author" content="Kinest">
 <meta property="article:tag" content="c++">
 <meta name="twitter:card" content="summary_large_image">
@@ -199,7 +199,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k 字
+          1.6k 字
         
       </span>
     
@@ -210,7 +210,7 @@
         
         
         
-          9 分钟
+          14 分钟
         
       </span>
     
@@ -254,7 +254,6 @@
                 
                 <p>一些关于阅读c++primer这本书的记录</p>
 <span id="more"></span>
-<h2 id="第二章">第二章</h2>
 <h3 id="复合类型">复合类型</h3>
 <p><strong>compound
 type</strong>，基于其他类型定义的类型，包括<strong>引用</strong>和<strong>指针</strong></p>
@@ -306,9 +305,9 @@ class="math inline">\(*\)</span>
 <h4 id="赋值和指针">赋值和指针</h4>
 <p>赋值和指针都能提供对其他对象的间接访问，引用本身并非一个对象，一旦定义了引用，就无法令其再绑定到另外的对象，之后每次使用这个引用都是访问它最初绑定的那个对象。指针和它存放的地址就没有这种限制。和其他任何变量（不包括引用）一样，给指针赋值就是令它存放一个新的地址，从而指向一个新的对象。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">int</span> i = <span class="hljs-number">32</span>;<br><span class="hljs-type">int</span> *p = <span class="hljs-number">0</span>;<br><span class="hljs-type">int</span> *pi2  = &amp;i;	<span class="hljs-comment">// pi2被初始化，指向变量i的地址</span><br><span class="hljs-type">int</span> *pi3;		<span class="hljs-comment">// 无法确定pi3的值</span><br>pi3 = pi2;  	<span class="hljs-comment">// pi2、pi3指向同一个对象</span><br>pi2 = <span class="hljs-number">0</span>;		<span class="hljs-comment">// pi2 不指向任何对象了</span><br></code></pre></td></tr></table></figure>
-<p><img src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20231211224135934.png" srcset="/img/loading.gif" lazyload alt="image-20231211224135934" style="zoom:67%;" /></p>
-<p>==赋值永远改变的是等号 左侧的对象==</p>
-<p><img src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20231211224420467.png" srcset="/img/loading.gif" lazyload alt="image-20231211224420467" style="zoom: 67%;" /></p>
+<p><img src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20231211224135934.png" srcset="/img/loading.gif" lazyload alt="image-20231211224135934"  /></p>
+<p><strong>赋值永远改变的是等号 左侧的对象</strong></p>
+<p><img src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20231211224420467.png" srcset="/img/loading.gif" lazyload alt="image-20231211224420467"  /></p>
 <p>**void*指针**：一种特殊类型的指针，可用于存放任意对象的地址</p>
 <p><strong>指向指针的指针</strong>：通过<span
 class="math inline">\(*\)</span> 的个数可以区分指针的级别</p>
@@ -330,6 +329,27 @@ alt="image-20231211230913778" />
 <h4 id="const的引用">const的引用</h4>
 <p>可以把引用绑定到const对象上，就像绑定其他对象一样，称之为<strong>对常量的引用</strong>（reference
 to const）。对常量的引用不能被用作修改它所绑定的对象。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">const</span> <span class="hljs-type">int</span> ci = <span class="hljs-number">1024</span>;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> &amp;r1 = ci;		<span class="hljs-comment">//引用及其对应的对象都是常量</span><br>r1 = <span class="hljs-number">43</span>;				<span class="hljs-comment">//错误，r1是对常量的引用</span><br><span class="hljs-type">int</span> &amp;r2 = ci;			<span class="hljs-comment">//错误，试图让一个非常量引用指向一个常量对象</span><br></code></pre></td></tr></table></figure>
+<h4 id="指针和const">指针和const</h4>
+<p><strong>指向常量的指针</strong>
+不能用于改变其所指对象的值，要想存放常量对象的地址，只能使用指向常量的指针。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">const</span> <span class="hljs-type">double</span> pi = <span class="hljs-number">3.14</span>;		<span class="hljs-comment">// Pi是常量，值不能改变</span><br><span class="hljs-type">double</span> *ptr = &amp;pi;			<span class="hljs-comment">// 错误，ptr是一个普通指针</span><br><span class="hljs-type">const</span> <span class="hljs-type">double</span> *cptr = &amp;pi;	<span class="hljs-comment">// 正确，cptr可以指向一个双精度常量</span><br>*cptr = <span class="hljs-number">43</span>;					<span class="hljs-comment">// 错误，不能给*cptr赋值</span><br></code></pre></td></tr></table></figure>
+<p>指针的类型必须与其所指向的对象的类型一致</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++">特殊情况：允许一个指向常量的指针指向一个非常量对象<br><span class="hljs-type">double</span> dval = <span class="hljs-number">3.14</span>;	<span class="hljs-comment">// dval是一个双精度浮点数，值可以改变</span><br>cptr = &amp;dval;		<span class="hljs-comment">// 正确，但是不能通过cptr改变dval的值</span><br></code></pre></td></tr></table></figure>
+<h4 id="const指针">const指针</h4>
+<p>指针是对象而引用不是，因此就像其他对象类型一样，允许把指针本身定为常量。常量指针必须初始化，而且一旦初始化完成，则它的值（也就是存放在指针中那个地址
+）就不能再改变了。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++">把*放在<span class="hljs-type">const</span>关键字前面用以说明指针是一个常量，意味着不变的是指针本身的值而不是指向的那个值<br><span class="hljs-type">int</span> errNumb = <span class="hljs-number">0</span>;<br><span class="hljs-type">int</span> *<span class="hljs-type">const</span> curerr = &amp;errNumb;	<span class="hljs-comment">// curerr 将一直指向errnumb</span><br><span class="hljs-type">const</span> <span class="hljs-type">double</span> pi = <span class="hljs-number">3.14159</span>;		<br>cosnt <span class="hljs-type">double</span> *<span class="hljs-type">const</span> pip = &amp;pi;	<span class="hljs-comment">// pip是一个指向常量对象的常量指针</span><br></code></pre></td></tr></table></figure>
+<h3 id="函数基础">函数基础</h3>
+<p>一个典型的函数定义包括：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs">返回类型<br>函数名字<br>0或多个形参组成的列表（以逗号隔开）<br>函数体（函数执行的操作）<br></code></pre></td></tr></table></figure>
+<h4 id="形参和实参">形参和实参</h4>
+<p>实参是形参的初始值。实参的类型必须与对应的形参类型匹配</p>
+<h4 id="参数传递">参数传递</h4>
+<p>如果形参是引用类型，它将绑定到对应的实参上面；否则，将实参的值拷贝后赋给形参</p>
+<p>当形参是引用类型是，我们说它对应的实参被<strong>引用传递</strong>或者函数被<strong>传引用调用</strong>。和其它引用一样，引用形参也是它绑定的对象的别名，也就是说引用形参是它对应的实参的别名。</p>
+<p>当实参的值被拷贝给形参时，形参和实参是两个独立的对象，说这样的实参被<strong>值传递</strong>，或者函数被<strong>传值调用</strong></p>
+<h4 id="指针形参">指针形参</h4>
 
                 
               </div>
@@ -398,6 +418,12 @@ to const）。对常量的引用不能被用作修改它所绑定的对象。</p
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2023/12/12/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/" title="go语言学习">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">go语言学习</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
