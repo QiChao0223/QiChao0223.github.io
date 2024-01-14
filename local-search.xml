@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>数字签名</title>
+    <link href="/2024/01/14/%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/"/>
+    <url>/2024/01/14/%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/</url>
+    
+    <content type="html"><![CDATA[<h1 id="schnorr签名算法">Schnorr签名算法</h1><p>（一）、秘钥生成</p><ul><li>选择一条椭圆曲线<span class="math inline">\(E_p(a,b)\)</span>和基点<span class="math inline">\(G\)</span></li><li>选择私钥<span class="math inline">\(d_A\)</span> （$d_a &lt; n $，<span class="math inline">\(n\)</span>是 <spanclass="math inline">\(G\)</span> 的阶），利用基点<spanclass="math inline">\(G\)</span>计算公钥<span class="math inline">\(Q_A= d_A \cdot G\)</span></li></ul><p>（二）、签名算法</p><ul><li>随机选择一个整数<span class="math inline">\(K\)</span>（<spanclass="math inline">\(K\)</span> &lt; n）</li><li>计算<span class="math inline">\(R = K \cdot G = (x_1,y_1)\)</span></li><li><span class="math inline">\(\sigma = K + hash(m || R) \cdotd_a\)</span></li><li>签名<span class="math inline">\((\sigma, R)\)</span></li></ul><p>（三）、验证算法</p><ul><li>验证等式：<span class="math inline">\(\sigma \cdot G = hash(m || R)\cdot Q_A + R\)</span></li><li>如果等式成立输出 <span class="math inline">\(1\)</span>，否则输出<span class="math inline">\(0\)</span></li></ul><h1 id="section"></h1>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>数字签名</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>go语言学习</title>
     <link href="/2023/12/12/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/"/>
     <url>/2023/12/12/go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/</url>
@@ -53,25 +72,6 @@
     <tags>
       
       <tag>code</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>An Introduction to Secret-Sharing-Based Secure Multiparty Computation</title>
-    <link href="/2023/11/18/An%20Introduction%20to%20Secret-Sharing-Based/"/>
-    <url>/2023/11/18/An%20Introduction%20to%20Secret-Sharing-Based/</url>
-    
-    <content type="html"><![CDATA[<p><!-- 在线显示PDF --><!-- 第一种方式，可调整pdf显示的大小，比较灵活 --></p><embed src="./SecretSharing.pdf" width="100%" height="1000" type="application/pdf">]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>MPC</tag>
       
     </tags>
     
