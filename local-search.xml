@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>aby</title>
+    <link href="/2024/01/17/aby/"/>
+    <url>/2024/01/17/aby/</url>
+    
+    <content type="html"><![CDATA[<p><span class="math inline">\(x\)</span>是1 bit</p><blockquote><p>yao share</p></blockquote><p>当<span class="math inline">\(x = 0\)</span> ，<spanclass="math inline">\(P_1\)</span>：<span class="math inline">\(x_{1}^Y= k_x = k_0 \oplus x R = k_0\)</span></p><p>当<span class="math inline">\(x = 1\)</span> ，<spanclass="math inline">\(P_1\)</span>：<span class="math inline">\(x_{1}^Y= k_x = k_0 \oplus x R = k_0 \oplus R\)</span></p><blockquote><p>yao reconstruct</p></blockquote><p><span class="math inline">\(\pi = \langle x \rangle _{1-i} ^Y [0] =k_{1-i}[0]\)</span></p><p><span class="math inline">\(\pi \oplus \langle x \rangle_{i} ^ Y [0]= k_{1-i}[0] \oplus (k_{1-i}[0] \oplus xR)[0] = 0 \oplus x R = x R =x\)</span></p><p>其中<span class="math inline">\(R\)</span>是一个<spanclass="math inline">\(\kappa\)</span>-bit的字符串，并且<spanclass="math inline">\(R[0] = 1\)</span></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>mpc</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>截断</title>
     <link href="/2024/01/15/%E6%88%AA%E6%96%AD/"/>
     <url>/2024/01/15/%E6%88%AA%E6%96%AD/</url>
