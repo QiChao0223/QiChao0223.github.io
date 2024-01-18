@@ -16,22 +16,22 @@
   <meta name="author" content="Kinest">
   <meta name="keywords" content="">
   
-    <meta name="description" content="ABY – A Framework for Efficient Mixed-Protocol Secure Two-Party Computation">
+    <meta name="description" content="ABY2.0: Improved Mixed-Protocol Secure Two-Party Computation">
 <meta property="og:type" content="article">
-<meta property="og:title" content="aby">
-<meta property="og:url" content="https://qichao0223.github.io/2024/01/17/aby/index.html">
+<meta property="og:title" content="aby2">
+<meta property="og:url" content="https://qichao0223.github.io/2024/01/18/aby2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="ABY – A Framework for Efficient Mixed-Protocol Secure Two-Party Computation">
+<meta property="og:description" content="ABY2.0: Improved Mixed-Protocol Secure Two-Party Computation">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-01-17T07:54:33.000Z">
-<meta property="article:modified_time" content="2024-01-18T07:25:10.922Z">
+<meta property="article:published_time" content="2024-01-18T07:06:52.000Z">
+<meta property="article:modified_time" content="2024-01-18T07:25:15.075Z">
 <meta property="article:author" content="Kinest">
 <meta property="article:tag" content="mpc">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>aby - Hexo</title>
+  <title>aby2 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -173,7 +173,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="aby"></span>
+            <span id="subtitle" data-typed-text="aby2"></span>
           
         </div>
 
@@ -184,8 +184,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-17 15:54" pubdate>
-          2024年1月17日 下午
+        <time datetime="2024-01-18 15:06" pubdate>
+          2024年1月18日 下午
         </time>
       </span>
     
@@ -196,7 +196,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          101 字
+          36 字
         
       </span>
     
@@ -244,84 +244,32 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">aby</h1>
+            <h1 id="seo-header">aby2</h1>
             
             
               <div class="markdown-body">
                 
-                <p>ABY – A Framework for Efficient Mixed-Protocol Secure Two-Party
-Computation</p>
+                <p>ABY2.0: Improved Mixed-Protocol Secure Two-Party Computation</p>
 <span id="more"></span>
-<p><span class="math inline">\(x\)</span>是1 bit</p>
-<blockquote>
-<p>yao share</p>
-</blockquote>
-<p>当<span class="math inline">\(x = 0\)</span> ，<span
-class="math inline">\(P_1\)</span>：<span class="math inline">\(x_{1}^Y
-= k_x = k_0 \oplus x R = k_0\)</span></p>
-<p>当<span class="math inline">\(x = 1\)</span> ，<span
-class="math inline">\(P_1\)</span>：<span class="math inline">\(x_{1}^Y
-= k_x = k_0 \oplus x R = k_0 \oplus R\)</span></p>
-<blockquote>
-<p>yao reconstruct</p>
-</blockquote>
-<p><span class="math inline">\(\pi = \langle x \rangle _{1-i} ^Y [0] =
-k_{1-i}[0]\)</span></p>
-<p><span class="math inline">\(\pi \oplus \langle x \rangle_{i} ^ Y [0]
-= k_{1-i}[0] \oplus (k_{1-i}[0] \oplus xR)[0] = 0 \oplus x R = x R =
-x\)</span></p>
-<p>其中<span class="math inline">\(R\)</span>是一个<span
-class="math inline">\(\kappa\)</span>-bit的字符串，并且<span
-class="math inline">\(R[0] = 1\)</span></p>
-<blockquote>
-<p>B2A：<span class="math inline">\(l\)</span> bit 的boolen share $x ^ B
-$ 转成 an arithmetic share $x ^ A $</p>
-</blockquote>
-<ol type="1">
-<li><p>简单的方案，在 <code>Boolean subtraction circuit</code>中</p>
-<p><span class="math inline">\(P_0\)</span>：输入 $x _ {0} ^ B $
-和随机数 <span class="math inline">\(r \in _R
-\{0,1\}^{\ell}\)</span>，获得 $x _ {0} ^ A = r $</p>
-<p><span class="math inline">\(P_1\)</span>：输入 $x _ {1} ^ B $ ，获得
-$x _ {1} ^ A = x - r $</p>
-<p>评估这样的减法电路需要 <span
-class="math inline">\(O(\ell\log_2\ell)\)</span> size 和 <span
-class="math inline">\(O(\log_2\ell)\)</span> depth 或者 <span
-class="math inline">\(O(\ell)\)</span> 的size 和 depth</p></li>
-<li><p>优化后方案，使用 <code>OT</code>，类似算术乘法三元组</p>
-<p><span class="math inline">\(P_0\)</span>：<code>sender</code></p>
-<p><span class="math inline">\(P_1\)</span>：<code>receiver</code></p>
-<p>在第 <span class="math inline">\(i-th\)</span> 轮 <code>OT</code></p>
-<p>​ <span class="math inline">\(P_0\)</span>随机选择<span
-class="math inline">\(r_i \in _R \{0,1\} ^ \ell\)</span>，并输入 <span
-class="math inline">\(({s_{i,0}},s_{i,1})\)</span>，其中<span
-class="math inline">\(s_{i,0}=(1-\langle x \rangle_{0}^{B}[i])\cdot 2 ^
-{i} - r_{i}\)</span> 和 <span class="math inline">\(s_{i,1}\:=\:\langle
-x\rangle_0^B[i]\cdot2^i\:-\:r_i\)</span></p>
-<p>​ <span class="math inline">\(1-\langle x \rangle_{0}^{B}[i] = \langle
-x \rangle_{1}^{B}[i]\)</span></p>
-<p>​ <span class="math inline">\(P_1\)</span>输入选择比特 $x _{i} ^{B}[i]
-$，接收 <span class="math inline">\(s_{\langle
-x\rangle_1^B[i]}=\left(\langle x\rangle_0^B[i]\oplus\langle
-x\rangle_1^B[i]\right) \cdot 2^i - r_{i}\)</span></p>
-<p>​ 当<span class="math inline">\(\langle x \rangle_{1} ^{B}[i]
-=1\)</span> 时，<span class="math inline">\(s_{\langle
-x\rangle_1^B[i]}=\left(\langle x\rangle_0^B[i]\oplus 1 \right) \cdot 2^i
-- r_{i} = (1-\langle x \rangle_{0}^{B}[i]) \cdot 2 ^{i} - r
-_{i}\)</span></p>
-<p>​ 当<span class="math inline">\(\langle x \rangle_{1} ^{B}[i]
-=0\)</span> 时，$s_{x_1^B[i]}=(x<em>0^B[i] ) ^i - r</em>{i} $</p>
-<p>最终，</p>
-<p><span class="math inline">\(P_0\)</span>计算出：<span
-class="math inline">\(\langle
-x\rangle_{0}^{A}=\sum_{i=1}^{\ell}r_{i}\)</span></p>
-<p><span class="math inline">\(P_1\)</span>计算出：<span
-class="math inline">\(\langle x\rangle_1^A=\sum_{i=1}^{\ell}s_{\langle
-x\rangle_1^B[i]}=\sum_{i=1}^{\ell}\left(\langle
-x\rangle_0^B[i]\oplus\langle x\rangle_1^B[i]\right)\cdot
-2^i-\sum_{i=1}^{\ell}r_i=\sum_{i=1}^{\ell}x[i]\cdot2^i-\sum_{i=1}^{\ell}r_i=x-\langle
-x\rangle_0^A\)</span></p></li>
-</ol>
+<h1 id="preliminaries">Preliminaries</h1>
+<p><code>两方</code>：<span
+class="math inline">\(\mathcal{P}=\{P_0,P_1\}\)</span></p>
+<p><code>scalar dot product</code>：2个长度为 <span
+class="math inline">\(n\)</span> 的向量 <span
+class="math inline">\(\vec{a}\)</span>和<span
+class="math inline">\(\vec{b}\)</span>，<span
+class="math inline">\(\vec{a}\odot\vec{b}=\boldsymbol{\sum_{j=1}^na_jb_j}\)</span>，其中<span
+class="math inline">\(a_\)</span> 和<span
+class="math inline">\(b_j\)</span>表示向量 <span
+class="math inline">\(\vec{a}\)</span> 和 <span
+class="math inline">\(\vec{b}\)</span> 的第 <span
+class="math inline">\(j\)</span> 个元素</p>
+<p><code>补码</code>：<span class="math inline">\(\overline{\mathrm{u}}
+= 1 \oplus u\)</span></p>
+<p><code>matric mul</code>：矩阵乘，<span
+class="math inline">\(\mathbf{A}\circ\mathbf{B}\)</span>，其中 <span
+class="math inline">\(A\)</span> 和 <span
+class="math inline">\(B\)</span> 是两个矩阵</p>
 
                 
               </div>
@@ -346,8 +294,8 @@ x\rangle_0^A\)</span></p></li>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>aby</div>
-      <div>https://qichao0223.github.io/2024/01/17/aby/</div>
+      <div>aby2</div>
+      <div>https://qichao0223.github.io/2024/01/18/aby2/</div>
     </div>
     <div class="license-meta">
       
@@ -359,7 +307,7 @@ x\rangle_0^A\)</span></p></li>
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年1月17日</div>
+          <div>2024年1月18日</div>
         </div>
       
       
@@ -391,18 +339,12 @@ x\rangle_0^A\)</span></p></li>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/18/aby2/" title="aby2">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">aby2</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/15/%E6%88%AA%E6%96%AD/" title="截断">
-                        <span class="hidden-mobile">截断</span>
+                      <a href="/2024/01/17/aby/" title="aby">
+                        <span class="hidden-mobile">aby</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
