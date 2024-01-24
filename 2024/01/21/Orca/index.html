@@ -23,11 +23,13 @@
 <meta property="og:site_name" content="thankuyou">
 <meta property="og:description" content="Orca: FSS-based Secure Training and Inference with GPUs">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/20210106110219329.png">
 <meta property="article:published_time" content="2024-01-21T13:43:37.000Z">
-<meta property="article:modified_time" content="2024-01-24T07:09:17.391Z">
+<meta property="article:modified_time" content="2024-01-24T09:30:49.660Z">
 <meta property="article:author" content="thankuyou">
 <meta property="article:tag" content="mpc">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/20210106110219329.png">
   
   
   
@@ -196,7 +198,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          230 字
+          302 字
         
       </span>
     
@@ -207,7 +209,7 @@
         
         
         
-          2 分钟
+          3 分钟
         
       </span>
     
@@ -430,6 +432,8 @@ src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240123
 alt="signed extension" />
 <figcaption aria-hidden="true">signed extension</figcaption>
 </figure>
+<p><code>证明：</code><span class="math inline">\(\hat{y}_b =
+\hat{x}&#39; + P_{(1,\hat{w})} + P_{(0,\hat{w})}\)</span></p>
 <p>其中，<span
 class="math inline">\(\mathsf{Gen}_{m}^{&lt;}(1^{\lambda},\mathsf{r}^{\mathsf{in}},1,\mathbb{S}_{N})\)</span>的定义要到<a
 target="_blank" rel="noopener" href="https://eprint.iacr.org/2022/793">《LLAMA: A Low Latency Math
@@ -441,6 +445,38 @@ Secret Sharing》</a>里面看，本篇论文并没提及。看之前LLAMA中的
 src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240123173118990.png" srcset="/img/loading.gif" lazyload
 alt="LLLAMA-SE" />
 <figcaption aria-hidden="true">LLLAMA-SE</figcaption>
+</figure>
+<h1 id="protocols-for-secure-training">Protocols for Secure
+Training</h1>
+<h2 id="training-functionalities">Training Functionalities</h2>
+<ul>
+<li><code>Linear layers</code>：matrix
+multiplications，convolutions，……</li>
+<li><code>Activation functions</code>：ReLU，Maxpool，……</li>
+</ul>
+<p>其中<code>Linear layers</code>
+中的函数使用和<code>LLAMA</code>相同的方式（在预计算阶段使用<code>Beaver三元组</code>）。</p>
+<h2 id="three-kinds-of-truncations">three kinds of truncations</h2>
+<p>通常在定点数计算中，乘法计算后要进行<code>截断（truncate）</code>操作来保证计算的精度。</p>
+<ul>
+<li>faithful truncation（arithmetic right shift）（例如LLAMA）</li>
+<li>stochastic truncation（例如cheetah、本文）</li>
+<li>local truncations（例如secureml、cryptogpu、securenn、piranha）</li>
+</ul>
+<p>这篇文章里用的是<code>stochastic truncation</code></p>
+<h2 id="relu">ReLU</h2>
+<figure>
+<img
+src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240124164711434.png" srcset="/img/loading.gif" lazyload
+alt="ReLU" />
+<figcaption aria-hidden="true">ReLU</figcaption>
+</figure>
+<p><img src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/20210106110219329.png" srcset="/img/loading.gif" lazyload alt="ReLU图像" style="zoom: 33%;" /></p>
+<figure>
+<img
+src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240124170404633.png" srcset="/img/loading.gif" lazyload
+alt="DReLu" />
+<figcaption aria-hidden="true">DReLu</figcaption>
 </figure>
 
                 
