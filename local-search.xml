@@ -4,6 +4,57 @@
   
   
   <entry>
+    <title>SIGMA</title>
+    <link href="/2024/03/04/SIGMA/"/>
+    <url>/2024/03/04/SIGMA/</url>
+    
+    <content type="html"><![CDATA[<p>《SIGMA: Secure GPT Inference with Function Secret Sharing》</p><!---more---><h1 id="摘要">摘要</h1><p>安全两方计算(2PC)支持安全推理，为专有的机器学习(ML)模型及其敏感输入提供保护。然而，现有的安全推理解决方案存在着较高的延迟和通信开销，特别是对于<code>transformer</code>。<code>FSS</code>是一种新的用于获得具有预处理阶段的高效2PC协议的范例。我们构造了<code>SIGMA</code>，第一个用于<code>transformer</code>安全推理的基于<code>FSS</code>的端到端系统。通过为复杂的机器学习功能(如<code>Softmax</code>和<code>Gelu</code>)构建基于<code>FSS</code>的新协议，并在GPU上加速它们的计算，与使用预处理和<code>GPU</code>的最先进技术相比，<code>SIGMA</code>将变压器的安全推理延迟提高了11−19倍。我们提出了GPT模型的第一个安全推理。特别是，<code>SIGMA</code>在7.4秒内执行具有13亿个参数的GPT-Neo，在1.6秒内执行HuggingFace的GPT2。</p><h1 id="preliminaries">Preliminaries</h1><h2 id="transformer">transformer</h2><p><img src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240304094229857.png" alt="transformer" style="zoom:67%;" /></p><h2 id="激活函数">激活函数</h2><figure><imgsrc="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240304163830448.png"alt="GeLU" /><figcaption aria-hidden="true">GeLU</figcaption></figure><h1 id="crypto-building-blocks">Crypto Building Blocks</h1>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>mpc</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>function secret sharing</title>
+    <link href="/2024/02/22/function-secret-sharing/"/>
+    <url>/2024/02/22/function-secret-sharing/</url>
+    
+    <content type="html"><![CDATA[<h1 id="function-secret-sharing">《Function Secret Sharing》</h1><figure><imgsrc="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240222110714961.png"alt="image-20240222110714961" /><figcaption aria-hidden="true">image-20240222110714961</figcaption></figure><span id="more"></span><h2 id="abstract">Abstract</h2><p>出于安全搜索和更新分布式数据的需要，我们引入和研究了<code>function secret sharing</code>的概念。这个新概念是对分布式点函数(<code>DPF</code>)的自然推广，<code>DPF</code>是近些年来被<code>Gilboa</code>和<code>Ishai</code>在2014年欧密提出的密码原语。给定一个正整数$P$ 和 一类函数<span class="math inline">\(f:\{0,1\} \longrightarrow\mathbb{G}\)</span> 的 <span class="math inline">\(\mathcal{F}\)</span>，其中， <span class="math inline">\(\mathbb{G}\)</span> 是<code>Abelian</code>群。</p><h2 id="new-constructions">New Constructions</h2><h3 id="point-functions">point functions</h3><p>定义：</p><figure><imgsrc="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240304094926733.png"alt="point functions" /><figcaption aria-hidden="true">point functions</figcaption></figure><h4 id="key">2-key</h4><figure><imgsrc="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240304095015828.png"alt="Gen" /><figcaption aria-hidden="true">Gen</figcaption></figure><p>符号说明：<span class="math inline">\(a: a_1a_2\cdotsa_n\)</span>，<span class="math inline">\([i]\)</span> 代表 <spanclass="math inline">\(i\)</span>-th</p><figure><imgsrc="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240304095041913.png"alt="Eval" /><figcaption aria-hidden="true">Eval</figcaption></figure><h4 id="p-key">p-key</h4>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>mpc</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>go</title>
+    <link href="/2024/02/02/go/"/>
+    <url>/2024/02/02/go/</url>
+    
+    <content type="html"><![CDATA[<p>Golang</p><!---more--->]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Orca</title>
     <link href="/2024/01/21/Orca/"/>
     <url>/2024/01/21/Orca/</url>

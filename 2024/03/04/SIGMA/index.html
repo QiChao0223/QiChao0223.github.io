@@ -16,24 +16,24 @@
   <meta name="author" content="thankuyou">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Orca: FSS-based Secure Training and Inference with GPUs">
+    <meta name="description" content="《SIGMA: Secure GPT Inference with Function Secret Sharing》  摘要 安全两方计算(2PC)支持安全推理，为专有的机器学习(ML)模型及其敏感输入提供保护。然而，现有的安全推理解决方案存在着较高的延迟和通信开销，特别是对于transformer。FSS是一种新的用于获得具有预处理阶段的高效2PC协议的范例。我们构造了SIGMA，第一个用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Orca">
-<meta property="og:url" content="https://qichao0223.github.io/2024/01/21/Orca/index.html">
+<meta property="og:title" content="SIGMA">
+<meta property="og:url" content="https://qichao0223.github.io/2024/03/04/SIGMA/index.html">
 <meta property="og:site_name" content="thankuyou">
-<meta property="og:description" content="Orca: FSS-based Secure Training and Inference with GPUs">
+<meta property="og:description" content="《SIGMA: Secure GPT Inference with Function Secret Sharing》  摘要 安全两方计算(2PC)支持安全推理，为专有的机器学习(ML)模型及其敏感输入提供保护。然而，现有的安全推理解决方案存在着较高的延迟和通信开销，特别是对于transformer。FSS是一种新的用于获得具有预处理阶段的高效2PC协议的范例。我们构造了SIGMA，第一个用">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/20210106110219329.png">
-<meta property="article:published_time" content="2024-01-21T13:43:37.000Z">
-<meta property="article:modified_time" content="2024-01-26T02:42:34.581Z">
+<meta property="og:image" content="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240304094229857.png">
+<meta property="article:published_time" content="2024-03-04T01:35:11.000Z">
+<meta property="article:modified_time" content="2024-03-04T08:47:11.260Z">
 <meta property="article:author" content="thankuyou">
 <meta property="article:tag" content="mpc">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/20210106110219329.png">
+<meta name="twitter:image" content="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240304094229857.png">
   
   
   
-  <title>Orca - thankuyou</title>
+  <title>SIGMA - thankuyou</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -175,7 +175,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Orca"></span>
+            <span id="subtitle" data-typed-text="SIGMA"></span>
           
         </div>
 
@@ -186,8 +186,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-21 21:43" pubdate>
-          2024年1月21日 晚上
+        <time datetime="2024-03-04 09:35" pubdate>
+          2024年3月4日 上午
         </time>
       </span>
     
@@ -198,7 +198,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          310 字
+          214 字
         
       </span>
     
@@ -209,7 +209,7 @@
         
         
         
-          3 分钟
+          2 分钟
         
       </span>
     
@@ -246,281 +246,27 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Orca</h1>
+            <h1 id="seo-header">SIGMA</h1>
             
             
               <div class="markdown-body">
                 
-                <p>Orca: FSS-based Secure Training and Inference with GPUs</p>
-<span id="more"></span>
+                <p>《SIGMA: Secure GPT Inference with Function Secret Sharing》</p>
+<!---more--->
+<h1 id="摘要">摘要</h1>
+<p>安全两方计算(2PC)支持安全推理，为专有的机器学习(ML)模型及其敏感输入提供保护。然而，现有的安全推理解决方案存在着较高的延迟和通信开销，特别是对于<code>transformer</code>。<code>FSS</code>是一种新的用于获得具有预处理阶段的高效2PC协议的范例。我们构造了<code>SIGMA</code>，第一个用于<code>transformer</code>安全推理的基于<code>FSS</code>的端到端系统。通过为复杂的机器学习功能(如<code>Softmax</code>和<code>Gelu</code>)构建基于<code>FSS</code>的新协议，并在GPU上加速它们的计算，与使用预处理和<code>GPU</code>的最先进技术相比，<code>SIGMA</code>
+将变压器的安全推理延迟提高了11−19倍。我们提出了GPT模型的第一个安全推理。特别是，<code>SIGMA</code>在7.4秒内执行具有13亿个参数的GPT-Neo，在1.6秒内执行HuggingFace的GPT2。</p>
 <h1 id="preliminaries">Preliminaries</h1>
-<h2 id="function-secret-sharingfss">Function Secret Sharing（FSS）</h2>
-<h3 id="定义">定义：</h3>
-<p>一个 <code>FSS scheme</code>由一对称为 <code>Gen</code> 和
-<code>Eval</code>的算法组成。</p>
-<p><code>Gen</code>：把秘密函数 <span
-class="math inline">\(f：\mathbb{G}^{in} \to \mathbb{G}^{out}\)</span>
-分割成一对函数 <span class="math inline">\(f_0\)</span> 和 <span
-class="math inline">\(f_1\)</span> （或者是 <span
-class="math inline">\(k_0\)</span>和<span
-class="math inline">\(k_1\)</span>）</p>
-<p><code>Eval</code>：<span class="math inline">\(\sigma \in \{0,
-1\}\)</span> 是身份标识符，在给定输入 <span class="math inline">\(x \in
-\mathbb{G}^{in}\)</span> 后，<code>Eval</code>评估函数 <span
-class="math inline">\(f_{\sigma}\)</span></p>
+<h2 id="transformer">transformer</h2>
+<p><img src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240304094229857.png" srcset="/img/loading.gif" lazyload alt="transformer" style="zoom:67%;" /></p>
+<h2 id="激活函数">激活函数</h2>
 <figure>
 <img
-src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240123093231248.png" srcset="/img/loading.gif" lazyload
-alt="FSS" />
-<figcaption aria-hidden="true">FSS</figcaption>
+src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240304163830448.png" srcset="/img/loading.gif" lazyload
+alt="GeLU" />
+<figcaption aria-hidden="true">GeLU</figcaption>
 </figure>
-<figure>
-<img
-src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240122151856529.png" srcset="/img/loading.gif" lazyload
-alt="FSS" />
-<figcaption aria-hidden="true">FSS</figcaption>
-</figure>
-<h2 id="distributed-comparison-functiondcf">Distributed Comparison
-Function（DCF）</h2>
-<figure>
-<img
-src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240123171121493.png" srcset="/img/loading.gif" lazyload
-alt="DCF" />
-<figcaption aria-hidden="true">DCF</figcaption>
-</figure>
-<h3 id="举例">举例：</h3>
-<p><strong>可以参考这篇文章</strong>《<a
-target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/647139387">函数秘密共享（一）</a>》</p>
-<h2 id="unsigned-and-signed-number">unsigned and signed number</h2>
-<p><span
-class="math inline">\(\mathsf{sint}_n(x)=\mathsf{uint}_n(x)-\mathsf{MSB}(x)*N\)</span>，其中
-<span
-class="math inline">\(\mathsf{MSB}(x)=\mathbf{1}\{x\geqslant2^{n-1}\}\)</span>，<span
-class="math inline">\(N=2^n\)</span></p>
-<blockquote>
-<p><span
-class="math inline">\(\mathsf{sint}_m(z)=z^{\prime}-2^{m-1},\text{ for
-}z^{\prime}=z+2^{m-1}\mod M\)</span></p>
-</blockquote>
-<p><code>过程如下：</code></p>
-<p><span class="math inline">\(z\)</span> 是一个<span
-class="math inline">\(m-bit\)</span>的无符号整数，<span
-class="math inline">\(M = 2 ^ m\)</span>，<span
-class="math inline">\(z\in [0,M-1]\)</span></p>
-<p>（1）$z'=z + 2^{m-1} $ ，将无符号整数范围从 <span
-class="math inline">\([0,M-1]\)</span> 调整到 <span
-class="math inline">\([-2^{m-1},2^{m-1}-1]\)</span></p>
-<p>（2）<span class="math inline">\(z&#39;\)</span> 减去 $2^{m-1} $
-的范围是<span
-class="math inline">\([-2^{m},-1]\)</span>，而无符号整数的范围是<span
-class="math inline">\([-2^{m-1},2^{m-1}-1]\)</span>，所以<span
-class="math inline">\(z^{\prime}-2^{m-1}\)</span> 的范围可以表示为<span
-class="math inline">\([-2^{m}+2^{m-1},-1+2^{m-1}] =
-[-2^{m-1},2^{m-1}-1]\)</span></p>
-<figure>
-<img
-src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240124145820077.png" srcset="/img/loading.gif" lazyload
-alt="有符号数和无符号数" />
-<figcaption aria-hidden="true">有符号数和无符号数</figcaption>
-</figure>
-<h1 id="building-blcoks">Building Blcoks</h1>
-<h2 id="select-function">Select Function</h2>
-<p><span class="math inline">\(select_n:\{0,1\} \times \mathbb{U}_N \to
-\mathbb{U}_N \\ select_{n}(s,x) = s \cdot x\)</span></p>
-<p>输入：选择比特 $s {0,1} $ 和 <span
-class="math inline">\(n-bit\)</span> 的负荷<span
-class="math inline">\(x\in \mathbb{U}_N\)</span></p>
-<p>输出：如果<span class="math inline">\(s=1\)</span>，输出<span
-class="math inline">\(x\)</span>；否则输出 <span
-class="math inline">\(0\)</span></p>
-<h3 id="offset-function-for-select_n">Offset function for <span
-class="math inline">\(select_n\)</span></h3>
-<p><span
-class="math inline">\(select_{n}^{[(r_{1}^{in},r_{2}^{in}),r^{out}]}
-(\hat{s},\hat{x}) = (\hat{s} - r_{1}^{in} + 2 \cdot 1 \{\hat{s} &lt;
-r_{1}^{in}\} ) \cdot (\hat{x} - r_{2}^{in}) + r^{out}\pmod{ 2 ^{n} }\\ =
-s \cdot x + r^{out} \pmod {2 ^n}\)</span></p>
-<p>其中<span class="math inline">\(r_{1}^{in}\)</span> 是选择比特 <span
-class="math inline">\(s\)</span> 的掩码，<span
-class="math inline">\(r_{2}^{in}\)</span> 是 <span
-class="math inline">\(x\)</span> 的掩码，<span
-class="math inline">\(r^{out}\)</span> 是<span class="math inline">\(s
-\cdot x\)</span> 结果的掩码</p>
-<blockquote>
-<p>$( - r_{1}^{in} + 2 { &lt; r_{1}^{in}} ) $ 为什么等于 <span
-class="math inline">\(s\)</span> ？</p>
-</blockquote>
-<table>
-
-<thead>
-<tr class="header">
-<th style="text-align: center;"><span
-class="math inline">\(s\)</span></th>
-<th style="text-align: center;"><span
-class="math inline">\(r_{1}^{in}\)</span></th>
-<th style="text-align: center;"><span
-class="math inline">\(\hat{s}\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(\hat{s} -
-r_{1}^{in} + 2 \cdot 1 \{\hat{s} &lt; r_{1}^{in}\}\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">0</td>
-</tr>
-</tbody>
-</table>
-<p>继续拆分上面的公式： <span class="math display">\[
-select_{n}^{[(r_{1}^{in},r_{2}^{in}),r^{out}]} (\hat{s},\hat{x}) =
-\hat{s} \cdot \hat{x}- r_{1}\cdot \hat{x} - \hat{s}\cdot r_{2}^{in}
-+r_{1}^{in} \cdot r_2^{in} + 2 \cdot 1\{\hat{s} =
-0   ,r_{1}^{in}=1\}\cdot (\hat{x} - r_{2}^{in}) + r^{out} \pmod{2^n}
-\]</span> <img
-src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240123110123795.png" srcset="/img/loading.gif" lazyload
-alt="select protocol" /></p>
-<h2 id="signed-extension">Signed Extension</h2>
-<p>具体定义可以看论文<a target="_blank" rel="noopener" href="https://eprint.iacr.org/2022/793">《LLAMA:
-A Low Latency Math Library for Secure Inference》</a>的section3.1</p>
-<figure>
-<img
-src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240124150635437.png" srcset="/img/loading.gif" lazyload
-alt="LLLAMA-GSE" />
-<figcaption aria-hidden="true">LLLAMA-GSE</figcaption>
-</figure>
-<figure>
-<img
-src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240124150720851.png" srcset="/img/loading.gif" lazyload
-alt="image-20240124150720851" />
-<figcaption aria-hidden="true">image-20240124150720851</figcaption>
-</figure>
-<figure>
-<img
-src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240124150743588.png" srcset="/img/loading.gif" lazyload
-alt="image-20240124150743588" />
-<figcaption aria-hidden="true">image-20240124150743588</figcaption>
-</figure>
-<p>因此可以得到下面的公式：</p>
-<p><span
-class="math inline">\(\mathsf{SignExt}_{m,n}^{[r^{\mathrm{in}},r^{\mathrm{out}}]}(\hat{x})
-=\hat{x}^{\prime}-r^{\mathrm{in}}+2^m\cdot1\{\hat{x}^{\prime}&lt;r^{\mathrm{in}}\}-2^{m-1}+r^{\mathrm{out}}\)</span>，其中
-<span
-class="math inline">\(\hat{x}&#39;=\hat{x}+2^{m-1}\mod2^m\)</span>​​</p>
-<figure>
-<img
-src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240123144635989.png" srcset="/img/loading.gif" lazyload
-alt="signed extension" />
-<figcaption aria-hidden="true">signed extension</figcaption>
-</figure>
-<p><code>证明：</code><span class="math inline">\(\hat{y}_b =
-\hat{x}&#39; + P_{(1,\hat{w})} + P_{(0,\hat{w})}\)</span></p>
-<p>其中，<span
-class="math inline">\(\mathsf{Gen}_{m}^{&lt;}(1^{\lambda},\mathsf{r}^{\mathsf{in}},1,\mathbb{S}_{N})\)</span>的定义要到<a
-target="_blank" rel="noopener" href="https://eprint.iacr.org/2022/793">《LLAMA: A Low Latency Math
-Library for Secure Inference》</a>和<a
-target="_blank" rel="noopener" href="https://iacr.org/archive/eurocrypt2015/90560300/90560300.pdf">《Function
-Secret Sharing》</a>里面看，本篇论文并没提及。看之前LLAMA中的定义：</p>
-<figure>
-<img
-src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240123173118990.png" srcset="/img/loading.gif" lazyload
-alt="LLLAMA-SE" />
-<figcaption aria-hidden="true">LLLAMA-SE</figcaption>
-</figure>
-<h1 id="protocols-for-secure-training">Protocols for Secure
-Training</h1>
-<h2 id="training-functionalities">Training Functionalities</h2>
-<ul>
-<li><code>Linear layers</code>：matrix
-multiplications，convolutions，……</li>
-<li><code>Activation functions</code>：ReLU，Maxpool，……</li>
-</ul>
-<p>其中<code>Linear layers</code>
-中的函数使用和<code>LLAMA</code>相同的方式（在预计算阶段使用<code>Beaver三元组</code>）。</p>
-<h2 id="three-kinds-of-truncations">three kinds of truncations</h2>
-<p>通常在定点数计算中，乘法计算后要进行<code>截断（truncate）</code>操作来保证计算的精度。</p>
-<ul>
-<li>faithful truncation（arithmetic right shift）（例如LLAMA）</li>
-<li>stochastic truncation（例如cheetah、本文）</li>
-<li>local truncations（例如secureml、cryptogpu、securenn、piranha）</li>
-</ul>
-<p>这篇文章里用的是<code>stochastic truncation</code></p>
-<h2 id="relu">ReLU</h2>
-<figure>
-<img
-src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240124164711434.png" srcset="/img/loading.gif" lazyload
-alt="ReLU" />
-<figcaption aria-hidden="true">ReLU</figcaption>
-</figure>
-<p><img src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/20210106110219329.png" srcset="/img/loading.gif" lazyload alt="ReLU图像" style="zoom: 33%;" /></p>
-<figure>
-<img
-src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240124170404633.png" srcset="/img/loading.gif" lazyload
-alt="DReLu" />
-<figcaption aria-hidden="true">DReLu</figcaption>
-</figure>
-<blockquote>
-<p><span class="math inline">\(DReLU_{n}^{[r_{in},r_{out}]}(\hat{x}) =
-DReLU_{n}(\hat{x}-r^{in} ) + r^{out} \\\)</span>​</p>
-<p><span class="math inline">\(\hat{y}= \hat{x} + 2 ^{n-1} \pmod
-{2^{n}}\)</span></p>
-</blockquote>
-<figure>
-<img
-src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240125153529612.png" srcset="/img/loading.gif" lazyload
-alt="取值情况" />
-<figcaption aria-hidden="true">取值情况</figcaption>
-</figure>
-<h2 id="stochastic-truncate-reduce">Stochastic Truncate-Reduce</h2>
-<figure>
-<img
-src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240125171517130.png" srcset="/img/loading.gif" lazyload
-alt="stTR" />
-<figcaption aria-hidden="true">stTR</figcaption>
-</figure>
-<figure>
-<img
-src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240126095659019.png" srcset="/img/loading.gif" lazyload
-alt="TR-举例" />
-<figcaption aria-hidden="true">TR-举例</figcaption>
-</figure>
-<figure>
-<img
-src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240125171544792.png" srcset="/img/loading.gif" lazyload
-alt="image-20240125171544792" />
-<figcaption aria-hidden="true">image-20240125171544792</figcaption>
-</figure>
-<figure>
-<img
-src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240126095755633.png" srcset="/img/loading.gif" lazyload
-alt="stTR举例" />
-<figcaption aria-hidden="true">stTR举例</figcaption>
-</figure>
-<figure>
-<img
-src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240126104225094.png" srcset="/img/loading.gif" lazyload
-alt="image-20240126104225094" />
-<figcaption aria-hidden="true">image-20240126104225094</figcaption>
-</figure>
+<h1 id="crypto-building-blocks">Crypto Building Blocks</h1>
 
                 
               </div>
@@ -545,8 +291,8 @@ alt="image-20240126104225094" />
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Orca</div>
-      <div>https://qichao0223.github.io/2024/01/21/Orca/</div>
+      <div>SIGMA</div>
+      <div>https://qichao0223.github.io/2024/03/04/SIGMA/</div>
     </div>
     <div class="license-meta">
       
@@ -558,7 +304,7 @@ alt="image-20240126104225094" />
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年1月21日</div>
+          <div>2024年3月4日</div>
         </div>
       
       
@@ -590,18 +336,12 @@ alt="image-20240126104225094" />
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/02/02/go/" title="go">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">go</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/18/aby2/" title="aby2">
-                        <span class="hidden-mobile">aby2</span>
+                      <a href="/2024/02/22/function-secret-sharing/" title="function secret sharing">
+                        <span class="hidden-mobile">function secret sharing</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
