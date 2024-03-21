@@ -16,22 +16,22 @@
   <meta name="author" content="thankuyou">
   <meta name="keywords" content="">
   
-    <meta name="description" content="MPC构造分类流派：  Yao‘s GC（混淆电路） SPDZ（算数电路） GMW（布尔电路） ABY（share转换） HE（同态）  论文合集： 《ABY – A Framework for Efficient Mixed-Protocol Secure Two-Party Computation》 原文链接 Abstract：安全计算使相互不信任的各方能够在私有输入上共">
+    <meta name="description" content="操作系统 进程和线程的区别  根本区别：进程是操作系统分配资源的基本单位，线程是处理器任务调度和执行的基本单位 资源开销：每个进程都有独立的代码和数据空间（程序上下文），程序之间的切换开销较大；同一类线程共享代码和空间，每个线程都有自己独立的运行栈和程序计数器，其切换的开销较小 包含关系：如果一个进程内有多个线程，则执行过程不是一条线的，而是多条线（线程）共同完成的；线程是进程的一部分，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mpc">
-<meta property="og:url" content="https://qichao0223.github.io/2024/03/14/mpc/index.html">
+<meta property="og:title" content="面试题">
+<meta property="og:url" content="https://qichao0223.github.io/2024/03/21/%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
 <meta property="og:site_name" content="thankuyou">
-<meta property="og:description" content="MPC构造分类流派：  Yao‘s GC（混淆电路） SPDZ（算数电路） GMW（布尔电路） ABY（share转换） HE（同态）  论文合集： 《ABY – A Framework for Efficient Mixed-Protocol Secure Two-Party Computation》 原文链接 Abstract：安全计算使相互不信任的各方能够在私有输入上共">
+<meta property="og:description" content="操作系统 进程和线程的区别  根本区别：进程是操作系统分配资源的基本单位，线程是处理器任务调度和执行的基本单位 资源开销：每个进程都有独立的代码和数据空间（程序上下文），程序之间的切换开销较大；同一类线程共享代码和空间，每个线程都有自己独立的运行栈和程序计数器，其切换的开销较小 包含关系：如果一个进程内有多个线程，则执行过程不是一条线的，而是多条线（线程）共同完成的；线程是进程的一部分，">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-03-14T02:10:18.000Z">
-<meta property="article:modified_time" content="2024-03-21T11:11:11.664Z">
+<meta property="article:published_time" content="2024-03-21T11:45:14.000Z">
+<meta property="article:modified_time" content="2024-03-21T12:17:14.907Z">
 <meta property="article:author" content="thankuyou">
-<meta property="article:tag" content="论文合集">
+<meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>mpc - thankuyou</title>
+  <title>面试题 - thankuyou</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -173,7 +173,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="mpc"></span>
+            <span id="subtitle" data-typed-text="面试题"></span>
           
         </div>
 
@@ -184,8 +184,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-03-14 10:10" pubdate>
-          2024年3月14日 上午
+        <time datetime="2024-03-21 19:45" pubdate>
+          2024年3月21日 晚上
         </time>
       </span>
     
@@ -196,7 +196,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k 字
+          1.1k 字
         
       </span>
     
@@ -207,7 +207,7 @@
         
         
         
-          17 分钟
+          10 分钟
         
       </span>
     
@@ -244,177 +244,54 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">mpc</h1>
+            <h1 id="seo-header">面试题</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="mpc构造分类流派">MPC构造分类流派：</h2>
+                <h1 id="操作系统">操作系统</h1>
+<h2 id="进程和线程的区别">进程和线程的区别</h2>
 <ol type="1">
-<li>Yao‘s GC（混淆电路）</li>
-<li>SPDZ（算数电路）</li>
-<li>GMW（布尔电路）</li>
-<li>ABY（share转换）</li>
-<li>HE（同态）</li>
+<li><code>根本区别</code>：进程是操作系统分配资源的基本单位，线程是处理器任务调度和执行的基本单位</li>
+<li><code>资源开销</code>：每个进程都有独立的代码和数据空间（程序上下文），程序之间的切换开销较大；同一类线程共享代码和空间，每个线程都有自己独立的运行栈和程序计数器，其切换的开销较小</li>
+<li><code>包含关系</code>：如果一个进程内有多个线程，则执行过程不是一条线的，而是多条线（线程）共同完成的；线程是进程的一部分，所以线程也被称为轻权进程或者轻量级进程。</li>
+<li><code>内存分配</code>：同一进程的线程共享本进程的地址空间和资源，而进程之间的地址空间和资源是相互独立的</li>
+<li><code>影响关系</code>：一个进程崩溃后，在保护模式下不会对其他进程产生影响，但是一个线程崩溃整个进程都死掉</li>
+<li><code>执行过程</code>：每个独立的进程都有程序运行的入口、顺序执行序列和程序出口，但是线程不能独立运行，必须依存在应用程序中</li>
 </ol>
-<h2 id="论文合集">论文合集：</h2>
-<p>《ABY – A Framework for Efficient Mixed-Protocol Secure Two-Party
-Computation》 <a
-target="_blank" rel="noopener" href="https://encrypto.de/papers/DSZ15.pdf">原文链接</a></p>
-<p><code>Abstract：</code>安全计算使相互不信任的各方能够在私有输入上共同评估函数，而不透露函数的输出以外的任何东西。半诚实模型中的通用安全计算协议已被广泛研究，并且已经进化了几种最佳实践。在这项工作中，我们设计并实现了一个混合协议框架，称为<code>ABY</code>，它有效地结合了基于算术共享、布尔共享和姚氏乱码电路的安全计算方案，并在安全的两方计算中提供了可用的最佳实践解决方案。我们的框架允许预先计算几乎所有的加密操作，并在基于预先计算的不经意传输扩展的安全计算方案之间提供新颖、高效的转换。ABY
-支持几个标准操作，从我们的基准测试中，我们推断了对安全计算协议高效设计的新见解，最突出的是，基于不经意传输的乘法比基于同态加密的乘法更有效。我们使用
-ABY
-为三个示例应用程序（私有集交集、生物特征匹配和模幂）构建混合协议，并表明它们比使用单个协议更有效。</p>
-<p><code>特点:</code></p>
-<ul>
-<li>两方计算框架</li>
-<li>半诚实敌手</li>
-<li>乘法使用 <code>Beaver</code>
-三元组，三元组使用<code>同态</code>（<code>DGK</code>和<code>Paillier</code>）和<code>OT</code>两种方式生成</li>
-</ul>
-<figure>
-<img
-src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240314102728157.png" srcset="/img/loading.gif" lazyload
-alt="image-20240314102728157" />
-<figcaption aria-hidden="true">image-20240314102728157</figcaption>
-</figure>
-<p>《ABY2.0: Improved Mixed-Protocol Secure Two-Party Computation》<a
-target="_blank" rel="noopener" href="https://eprint.iacr.org/2020/1225.pdf">原文链接</a></p>
-<p><code>Abstract：</code>安全多方计算（MPC）允许一组相互不信任的各方在维护输入隐私的同时，对其私人输入联合评估函数。在这项工作中，我们改进了环上的半诚实安全两方计算（2PC），重点是在线阶段的效率。我们提出了一种高效的混合协议框架，其性能优于ABY最先进的2PC框架。此外，我们将我们的技术扩展到多输入乘法门，而不会膨胀在线通信，即它保持独立于扇入。在此过程中，我们为标量积、矩阵乘法、比较、最大池和等式测试等几个原语构建了有效的协议。我们的标量乘积的在线通信是两个环元素，与向量维度无关，这是2PC文献中首次实现的特征。我们的新协议集的实用性通过四个应用程序展示：i）AES
-S-box，ii）基于电路的私用集交集，iii）生物特征匹配，以及iv）保密机器学习（PPML）。最值得注意的是，对于PPML，我们在LAN和WAN网络上实现并基准测试逻辑回归和神经网络的训练和推理。对于训练，我们在SecureML（Mohasel
-et al.，IEEE
-S&amp;P’17）上改进了在线运行时间（局域网和广域网），范围为1.5×–6.1×，而对于推理，改进范围为2.5×–754.3×</p>
-<p><code>特点:</code></p>
-<ul>
-<li>两方计算框架</li>
-<li>半诚实敌手</li>
-</ul>
-<figure>
-<img
-src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240314112145443.png" srcset="/img/loading.gif" lazyload
-alt="image-20240314112145443" />
-<figcaption aria-hidden="true">image-20240314112145443</figcaption>
-</figure>
-<figure>
-<img
-src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240314112041439.png" srcset="/img/loading.gif" lazyload
-alt="image-20240314112041439" />
-<figcaption aria-hidden="true">image-20240314112041439</figcaption>
-</figure>
-<p>相较于ABY的一些改进：</p>
+<h2 id="进程间的通信方式">进程间的通信方式</h2>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/zhaohong_bo/article/details/89552188">详细解释</a></p>
 <ol type="1">
-<li>ABY转化中在线阶段需要大量OT，ABY2.0中OT都在预计算完成，因此ABY2.0转化中在线效率提升很多（除了Y2B）</li>
-<li>预计算阶段生成三元组
-)的方法和ABY一样。对比ABY，另一个提升在于多输入乘法只需要一轮通信而且通信量只有
-ℓ 比特。</li>
-<li>ABY2.0基于B2A做了三种比较高效转化</li>
-<li>和ABY相比，ABY2.0对于电路性能进行了进一步的提升，大部分开销转移到了预计算阶段。这主要归功于新的sharing
-semantics的提出。但是，预计算的开销却增加到了指数级别（多输入乘法门）。进一步，ABY2.0的计算需要对事先对电路的结构进行全局的扫描生成乘法关联元组，这比ABY的要求更加严格。</li>
+<li><code>管道</code>：一种半双工的通信方式，数据只能单向流动，而且只能在具有亲缘关系的进程间使用。进程的亲缘关系通常是指父子进程关系。</li>
+<li><code>命名管道FIFO</code>：有名管道也是半双工的通信方式，但是它允许无亲缘关系进程间的通信。</li>
+<li><code>消息队列MessageQueue</code>：消息队列是由消息的链表，存放在内核中并由消息队列标识符标识。消息队列克服了信号传递信息少、管道只能承载无格式字节流以及缓冲区大小受限等缺点。</li>
+<li><code>共享存储SharedMemory</code>：共享内存就是映射一段能被其他进程所访问的内存，这段共享内存由一个进程创建，但多个进程都可以访问。共享内存是最快的
+IPC
+方式，它是针对其他进程间通信方式运行效率低而专门设计的。它往往与其他通信机制，如信号量，配合使用，来实现进程间的同步和通信。</li>
+<li>信号量Semaphore：信号量是一个计数器，可以用来控制多个进程对共享资源的访问。它常作为一种锁机制，防止某进程正在访问共享资源时，其他进程也访问该资源。因此，主要作为进程间以及同一进程内不同线程之间的同步手段</li>
+<li>套接字Socket：套解口也是一种进程间通信机制，与其他通信机制不同的是，它可用于不同及其间的进程通信</li>
+<li>信号 ( sinal ) ：
+信号是一种比较复杂的通信方式，用于通知接收进程某个事件已经发生。它是一个计数器。信号量用于实现进程间的互斥与同步，而不是用于存储进程间通信数据。信号量用于进程间同步，若要在进程间传递数据需要结合共享内存。信号量基于操作系统的
+PV 操作，程序对信号量的操作都是原子操作。每次对信号量的 PV
+操作不仅限于对信号量值加 1 或减 1，而且可以加减任意正整数。</li>
 </ol>
-<figure>
-<img
-src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240314112416104.png" srcset="/img/loading.gif" lazyload
-alt="image-20240314112416104" />
-<figcaption aria-hidden="true">image-20240314112416104</figcaption>
-</figure>
-<p>《Scalable Multi-Party Computation Protocols for Machine Learning in
-the Honest-Majority Setting》<a
-target="_blank" rel="noopener" href="https://www.usenix.org/system/files/sec24summer-prepub-278-liu-fengrun.pdf">原文链接</a></p>
-<p><code>Abstract：</code>在本文中，我们提出了一种新颖且可扩展的多方计算(MPC)协议，该协议针对诚实多数设置下具有半诚实安全性的隐私保护机器学习(PPML)。该协议利用
-Damgaård Nielsen (Crypto'07) 协议和 Mersenne 素数。通过利用 Mersenne
-素数的特殊属性，我们能够设计高效的协议来安全地计算截断和比较等操作。此外，我们扩展了
-ATLAS (Crypto'21)
-中的两层乘法协议，以进一步降低神经网络中常用的操作轮次复杂性。就所涉及的各方数量而言，我们的协议非常可扩展。例如，我们的协议分别在
-LAN 和 WAN 设置中分别在 0.1 秒和 4.6 秒的时间内完成了具有 63 方的 4
-层卷积神经网络的在线不经意推理。据我们所知，这是PPML领域第一个完全实现的协议，可以成功地用如此大量的各方运行。值得注意的是，即使在三方情况下，我们协议的在线阶段也比
-Falcon (PETS'21) 协议快 1.4 倍。</p>
-<p>《SecureML: A System for Scalable Privacy-Preserving Machine
-Learning》<a
-target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=7958569">原文链接</a></p>
-<p><code>Abstract:</code>机器学习在实践中被广泛用于为图像处理、语音和文本识别等应用生成预测模型。在对从不同来源收集的大量数据进行训练时，这些模型更准确。然而，海量数据收集引发了隐私问题。在本文中，我们提出了一种新颖高效的隐私保护机器学习协议，用于使用随机梯度下降方法进行线性回归、逻辑回归和神经网络训练。我们的协议属于双服务器模型，数据所有者在两个非串通服务器之间分配他们的私有数据，这些服务器使用安全的两方计算
-(2PC)
-在联合数据上训练各种模型。我们开发了新技术来支持共享十进制数字上的安全算术运算，并为优于先前工作的
-sigmoid 和 softmax 等非线性函数提出了 MPC 友好的替代方案。我们在 C++
-中实现我们的系统。我们的实验表明，我们的协议比最先进的隐私保护线性回归和逻辑回归实现快几个数量级，并扩展到具有数千个特征的数百万个数据样本。我们还实现了第一个用于训练神经网络的隐私保护系统。</p>
-<p><code>贡献：</code></p>
+<h2 id="死锁产生和避免">死锁产生和避免</h2>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/61221667">详细解释</a></p>
+<p><code>死锁</code>：如果一个进程集合中的每个进程都在等待只能由此集合中的其他进程引发的时间，而无限期陷入僵持的局面称为死锁</p>
+<p><code>产生条件：</code></p>
 <ul>
-<li>设计了线性回归、逻辑回归、神经网络的高效安全计算协议</li>
-<li>定点数截断</li>
-<li>mpc-friendly的激活函数</li>
-<li>面向秘密共享的向量化计算</li>
+<li>互斥条件：临界资源是独占资源，进程应互斥且排他的使用这些资源</li>
+<li>占有和等待条件：进程在请求资源得不到满足而等待时，不释放已占有资源</li>
+<li>不可剥夺：又称不可抢占，已获得的资源只能由进程自愿释放，不允许被其他进程剥夺</li>
+<li>循环等待：每个进程都在等待链中等待下一个进程所持有的资源，造成这组进程处于永远等待状态</li>
 </ul>
-<h2 id="截断">截断：</h2>
-<h3 id="原因">原因：</h3>
-<p>考虑两个数 <span class="math inline">\(x\)</span> 和 <span
-class="math inline">\(y\)</span> ，这两个数最多有 <span
-class="math inline">\(l_D\)</span>
-位的小数部分，可以先把这两个数转成整数，即<span
-class="math inline">\(x&#39; = 2^{l_D}\cdot x\)</span> 和 <span
-class="math inline">\(&#39; = 2^{l_D}\cdot
-y\)</span>，这两个数相乘后的结果为 $z = x' y' = xy ^{2 } $，这个时候
-<span class="math inline">\(z\)</span> 会有最多 <span
-class="math inline">\(2 \cdot {l_D}\)</span>
-位的小数部分，注意到这个时候精度扩展了，这包含两个方面：</p>
+<p><code>避免：</code></p>
 <ul>
-<li><p>小数部分的扩张，从<span class="math inline">\({l_D}\)</span>
-扩张到 <span class="math inline">\(2 \cdot
-{l_D}\)</span>，这部分是肯定会发生的​；</p></li>
-<li><p>整数部分的扩张，从<span class="math inline">\({l_x}-
-{l_D}\)</span> 扩张到 <span class="math inline">\(2 \cdot ({l_x}-
-{l_D})\)</span>，整数部分的扩张是概率性的，即有可能是扩张的，也可能不扩张。例如，<span
-class="math inline">\(0.5\cdot
-0.5\)</span>只会导致小数部分的扩张，整数部分保持为0，没发生扩张。</p></li>
+<li>死锁防止</li>
+<li>死锁避免</li>
+<li>死锁检测和恢复</li>
 </ul>
-<p>在安全多方计算中，我们必须保持乘法前后原始数据的表现形式是一致的，即数据精度
-<span class="math inline">\(l_x\)</span> 和 小数部分位数<span
-class="math inline">\(l_D\)</span>​保持不变。<a
-href="%5B阅读笔记%20-%20知乎%20(zhihu.com)%5D(https://zhuanlan.zhihu.com/p/645197985)">详情建议查看链接内容</a></p>
-<h3 id="分类">分类：</h3>
-<figure>
-<img
-src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240321184806336.png" srcset="/img/loading.gif" lazyload
-alt="截断方法分类" />
-<figcaption aria-hidden="true">截断方法分类</figcaption>
-</figure>
-<p><code>《secureml》：</code>证明了上述的截断操作在 <span
-class="math inline">\(z\)</span>
-是秘密共享的时候依然生效，甚至，两个服务端就可以独立的在本地对秘密份额进行截断。在下面的理论中证明了：对于一个足够大的域，重构截断后的份额有很大的概率与想要的结果只有
-1 bit 的误差。</p>
-<figure>
-<img
-src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240321144755712.png" srcset="/img/loading.gif" lazyload
-alt="secureml问题版" />
-<figcaption aria-hidden="true">secureml问题版</figcaption>
-</figure>
-<p><code>《Grotto》：</code></p>
-<figure>
-<img
-src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240321172603621.png" srcset="/img/loading.gif" lazyload
-alt="Grotto截断分析" />
-<figcaption aria-hidden="true">Grotto截断分析</figcaption>
-</figure>
-<p><code>《LLAMA》：</code>算数右移（<code>ARS</code>），在本地进行模运算</p>
-<figure>
-<img
-src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240320190612311.png" srcset="/img/loading.gif" lazyload
-alt="image-20240320190612311" />
-<figcaption aria-hidden="true">image-20240320190612311</figcaption>
-</figure>
-<h2 id="relu">ReLU</h2>
-<p><code>一些路线：</code></p>
-<ol type="1">
-<li>replace ReLUs with MPC-friendly approximations</li>
-<li>search for network backbones with a minimal number of ReLUs</li>
-<li>hardware-aware ReLU-reduced networks to achieve better
-latencies</li>
-<li>derive inspiration from network pruning</li>
-</ol>
-<figure>
-<img
-src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240314103600017.png" srcset="/img/loading.gif" lazyload
-alt="image-20240314103600017" />
-<figcaption aria-hidden="true">image-20240314103600017</figcaption>
-</figure>
 
                 
               </div>
@@ -427,7 +304,7 @@ alt="image-20240314103600017" />
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E8%AE%BA%E6%96%87%E5%90%88%E9%9B%86/" class="print-no-link">#论文合集</a>
+        <a href="/tags/%E9%9D%A2%E8%AF%95/" class="print-no-link">#面试</a>
       
     </div>
   
@@ -439,8 +316,8 @@ alt="image-20240314103600017" />
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>mpc</div>
-      <div>https://qichao0223.github.io/2024/03/14/mpc/</div>
+      <div>面试题</div>
+      <div>https://qichao0223.github.io/2024/03/21/面试题/</div>
     </div>
     <div class="license-meta">
       
@@ -452,7 +329,7 @@ alt="image-20240314103600017" />
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年3月14日</div>
+          <div>2024年3月21日</div>
         </div>
       
       
@@ -484,18 +361,12 @@ alt="image-20240314103600017" />
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/03/21/%E9%9D%A2%E8%AF%95%E9%A2%98/" title="面试题">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">面试题</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/14/%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/" title="数字签名">
-                        <span class="hidden-mobile">数字签名</span>
+                      <a href="/2024/03/14/mpc/" title="mpc">
+                        <span class="hidden-mobile">mpc</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
