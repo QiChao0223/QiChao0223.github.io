@@ -16,15 +16,15 @@
   <meta name="author" content="thankuyou">
   <meta name="keywords" content="">
   
-    <meta name="description" content="MPC构造分类流派：  Yao‘s GC（混淆电路） SPDZ（算数电路） GMW（布尔电路） ABY（share转换） HE（同态）  论文合集： 《ABY – A Framework for Efficient Mixed-Protocol Secure Two-Party Computation》 原文链接 Abstract：安全计算使相互不信任的各方能够在私有输入">
+    <meta name="description" content="随心所欲的记录">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mpc">
 <meta property="og:url" content="https://qichao0223.github.io/2024/03/14/mpc/index.html">
 <meta property="og:site_name" content="thankuyou">
-<meta property="og:description" content="MPC构造分类流派：  Yao‘s GC（混淆电路） SPDZ（算数电路） GMW（布尔电路） ABY（share转换） HE（同态）  论文合集： 《ABY – A Framework for Efficient Mixed-Protocol Secure Two-Party Computation》 原文链接 Abstract：安全计算使相互不信任的各方能够在私有输入">
+<meta property="og:description" content="随心所欲的记录">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-14T02:10:18.000Z">
-<meta property="article:modified_time" content="2024-03-27T08:11:03.799Z">
+<meta property="article:modified_time" content="2024-03-28T06:43:03.888Z">
 <meta property="article:author" content="thankuyou">
 <meta property="article:tag" content="论文合集">
 <meta name="twitter:card" content="summary_large_image">
@@ -249,7 +249,8 @@
             
               <div class="markdown-body">
                 
-                <span id="more"></span>
+                <p>随心所欲的记录</p>
+<span id="more"></span>
 <h2 id="mpc构造分类流派">MPC构造分类流派：</h2>
 <ol type="1">
 <li>Yao‘s GC（混淆电路）</li>
@@ -344,7 +345,21 @@ sigmoid 和 softmax 等非线性函数提出了 MPC 友好的替代方案。我�
 <li>mpc-friendly的激活函数</li>
 <li>面向秘密共享的向量化计算</li>
 </ul>
-<h2 id="截断">截断：</h2>
+<h2 id="transformer">Transformer</h2>
+<h3 id="mpc-based-bottleneck">mpc-based Bottleneck</h3>
+<p>2022年《Characterization of MPC-based Private Inference for
+Transformer-based Models》</p>
+<h3 id="解决方案">解决方案</h3>
+<p><code>知识蒸馏 + 近似：</code>见论文</p>
+<p>《MPCFormer: fast, performant and private Transformer inference with
+MPC》</p>
+<figure>
+<img
+src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240328144233668.png" srcset="/img/loading.gif" lazyload
+alt="mpcformer" />
+<figcaption aria-hidden="true">mpcformer</figcaption>
+</figure>
+<h2 id="截断">截断</h2>
 <h3 id="原因">原因：</h3>
 <p>考虑两个数 <span class="math inline">\(x\)</span> 和 <span
 class="math inline">\(y\)</span> ，这两个数最多有 <span
