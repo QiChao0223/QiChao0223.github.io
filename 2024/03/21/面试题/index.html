@@ -24,7 +24,7 @@
 <meta property="og:description" content="随便记录">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-21T11:45:14.000Z">
-<meta property="article:modified_time" content="2024-04-02T09:32:39.911Z">
+<meta property="article:modified_time" content="2024-04-03T06:50:06.094Z">
 <meta property="article:author" content="thankuyou">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary_large_image">
@@ -198,7 +198,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.6k 字
+          6.3k 字
         
       </span>
     
@@ -209,7 +209,7 @@
         
         
         
-          39 分钟
+          53 分钟
         
       </span>
     
@@ -259,7 +259,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2024年4月2日 下午
+                    本文最后更新于：2024年4月3日 下午
                   
                 
               </p>
@@ -269,6 +269,7 @@
                 
                 <p>随便记录</p>
 <span id="more"></span>
+<p>[TOC]</p>
 <h1 id="操作系统">操作系统</h1>
 <h2 id="进程和线程的区别">进程和线程的区别</h2>
 <ol type="1">
@@ -289,9 +290,9 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/zhaohong_bo/article/d
 <li><code>共享存储SharedMemory</code>：共享内存就是映射一段能被其他进程所访问的内存，这段共享内存由一个进程创建，但多个进程都可以访问。共享内存是最快的
 IPC
 方式，它是针对其他进程间通信方式运行效率低而专门设计的。它往往与其他通信机制，如信号量，配合使用，来实现进程间的同步和通信。</li>
-<li>信号量Semaphore：信号量是一个计数器，可以用来控制多个进程对共享资源的访问。它常作为一种锁机制，防止某进程正在访问共享资源时，其他进程也访问该资源。因此，主要作为进程间以及同一进程内不同线程之间的同步手段</li>
-<li>套接字Socket：套解口也是一种进程间通信机制，与其他通信机制不同的是，它可用于不同及其间的进程通信</li>
-<li>信号 ( sinal ) ：
+<li><code>信号量Semaphore</code>：信号量是一个计数器，可以用来控制多个进程对共享资源的访问。它常作为一种锁机制，防止某进程正在访问共享资源时，其他进程也访问该资源。因此，主要作为进程间以及同一进程内不同线程之间的同步手段</li>
+<li><code>套接字Socket</code>：套解口也是一种进程间通信机制，与其他通信机制不同的是，它可用于不同及其间的进程通信</li>
+<li><code>信号 ( sinal )</code> ：
 信号是一种比较复杂的通信方式，用于通知接收进程某个事件已经发生。它是一个计数器。信号量用于实现进程间的互斥与同步，而不是用于存储进程间通信数据。信号量用于进程间同步，若要在进程间传递数据需要结合共享内存。信号量基于操作系统的
 PV 操作，程序对信号量的操作都是原子操作。每次对信号量的 PV
 操作不仅限于对信号量值加 1 或减 1，而且可以加减任意正整数。</li>
@@ -363,7 +364,56 @@ PV 操作，程序对信号量的操作都是原子操作。每次对信号量�
 <h3 id="poll">poll</h3>
 <h4 id="描述-1">描述：</h4>
 <p>poll的实现和select非常相似，只是描述fd集合的方式不同。针对select遗留的三个问题中（问题(2)是fd限制问题，问题(1)和(3)则是性能问题），poll只是使用pollfd结构而不是select的fd_set结构，这就解决了select的问题(2)fds集合大小1024限制问题。但poll和select同样存在一个性能缺点就是包含大量文件描述符的数组被整体复制于用户态和内核的地址空间之间，而不论这些文件描述符是否就绪，它的开销随着文件描述符数量的增加而线性增大。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">pollfd</span> &#123;<br>　　 <span class="hljs-type">int</span> fd;           <span class="hljs-comment">/*文件描述符*/</span><br>　　 <span class="hljs-type">short</span> events;     <span class="hljs-comment">/*监控的事件*/</span><br>　　 <span class="hljs-type">short</span> revents;    <span class="hljs-comment">/*监控事件中满足条件返回的事件*/</span><br>&#125;;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">poll</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> pollfd *fds, <span class="hljs-type">unsigned</span> <span class="hljs-type">long</span> nfds, <span class="hljs-type">int</span> timeout)</span></span>;   <br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">pollfd</span> &#123;<br>　　 <span class="hljs-type">int</span> fd;           <span class="hljs-comment">/*文件描述符*/</span><br>　　 <span class="hljs-type">short</span> events;     <span class="hljs-comment">/*监控的事件*/</span><br>　　 <span class="hljs-type">short</span> revents;    <span class="hljs-comment">/*监控事件中满足条件返回的事件*/</span><br>&#125;;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">poll</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> pollfd *fds, <span class="hljs-type">unsigned</span> <span class="hljs-type">long</span> nfds, <span class="hljs-type">int</span> timeout)</span></span>;   <br><br>fds：<span class="hljs-keyword">struct</span> <span class="hljs-title class_">pollfd</span>类型的数组, 存储了待检测的文件描述符，<span class="hljs-keyword">struct</span> <span class="hljs-title class_">pollfd</span>有三个成员：<br><br>    fd：委托内核检测的文件描述符<br><br>    events：委托内核检测的fd事件（输入、输出、错误），每一个事件有多个取值<br><br>    revents：这是一个传出参数，数据由内核写入，存储内核检测之后的结果<br><br>nfds：描述的是数组 fds 的大小<br><br>timeout: 指定poll函数的阻塞时长<br>    <span class="hljs-number">-1</span>：一直阻塞，直到检测的集合中有就绪的IO事件，然后解除阻塞函数返回<br>     <span class="hljs-number">0</span>：不阻塞，不管检测集合中有没有已就绪的IO事件，函数马上返回<br>    &gt;<span class="hljs-number">0</span>：表示 poll 调用方等待指定的毫秒数后返回<br></code></pre></td></tr></table></figure>
+<p>poll<code>改变了fds集合的描述</code>方式，使用了<code>pollfd结构</code>而不是select的fd_set结构，使得poll支持的fds集合限制远<code>大于select的1024</code>。poll虽然解决了fds集合大小1024的限制问题，从实现来看。很明显它并没优化大量描述符数组被整体复制于用户态和内核态的地址空间之间，以及个别描述符就绪触发整体描述符集合的遍历的低效问题。poll随着监控的socket集合的增加性能线性下降，使得poll也并不适合用于大并发场景。</p>
+<p><code>poll服务端实现伪码：</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">pollfd</span> fds[POLL_LEN];<br><span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> nfds=<span class="hljs-number">0</span>;<br>fds[<span class="hljs-number">0</span>].fd=server_sockfd;<br>fds[<span class="hljs-number">0</span>].events=POLLIN|POLLPRI;<br>nfds++;<br><span class="hljs-keyword">while</span> &#123;<br>    res=<span class="hljs-built_in">poll</span>(fds,nfds,<span class="hljs-number">-1</span>);<br>    <span class="hljs-keyword">if</span>(fds[<span class="hljs-number">0</span>].revents&amp;(POLLIN|POLLPRI)) &#123;<br>        <span class="hljs-comment">//执行accept并加入fds中，nfds++</span><br>        <span class="hljs-keyword">if</span>(--res&lt;=<span class="hljs-number">0</span>) <span class="hljs-keyword">continue</span><br>    &#125;<br>    <span class="hljs-comment">//循环之后的fds</span><br>    <span class="hljs-keyword">if</span>(fds[i].revents&amp;(POLLIN|POLLERR )) &#123;<br>        <span class="hljs-comment">//读操作或处理异常等</span><br>        <span class="hljs-keyword">if</span>(--res&lt;=<span class="hljs-number">0</span>) <span class="hljs-keyword">continue</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="epoll">epoll</h3>
+<p>相比于select，epoll最大的好处在于它<code>不会随着监听fd数目的增长而降低效率</code>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-built_in">SYSCALL_DEFINE1</span>(epoll_create1, <span class="hljs-type">int</span>, flags)<br>&#123;<br>    <span class="hljs-keyword">struct</span> <span class="hljs-title class_">eventpoll</span> *ep = <span class="hljs-literal">NULL</span>;<br><br>    <span class="hljs-comment">//创建一个 eventpoll 对象</span><br>    error = <span class="hljs-built_in">ep_alloc</span>(&amp;ep);<br>&#125;<br><br><span class="hljs-comment">//struct eventpoll 的定义</span><br><span class="hljs-comment">// file：fs/eventpoll.c</span><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">eventpoll</span> &#123;<br><br>    <span class="hljs-comment">//sys_epoll_wait用到的等待队列</span><br>    <span class="hljs-type">wait_queue_head_t</span> wq;<br><br>    <span class="hljs-comment">//接收就绪的描述符都会放到这里</span><br>    <span class="hljs-keyword">struct</span> <span class="hljs-title class_">list_head</span> rdllist;<br><br>    <span class="hljs-comment">//每个epoll对象中都有一颗红黑树</span><br>    <span class="hljs-keyword">struct</span> <span class="hljs-title class_">rb_root</span> rbr;<br><br>    ......<br>&#125;<br><span class="hljs-function"><span class="hljs-type">static</span> <span class="hljs-type">int</span> <span class="hljs-title">ep_alloc</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> eventpoll **pep)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">struct</span> <span class="hljs-title class_">eventpoll</span> *ep;<br><br>    <span class="hljs-comment">//申请 epollevent 内存</span><br>    ep = <span class="hljs-built_in">kzalloc</span>(<span class="hljs-built_in">sizeof</span>(*ep), GFP_KERNEL);<br><br>    <span class="hljs-comment">//初始化等待队列头</span><br>    <span class="hljs-built_in">init_waitqueue_head</span>(&amp;ep-&gt;wq);<br><br>    <span class="hljs-comment">//初始化就绪列表</span><br>    <span class="hljs-built_in">INIT_LIST_HEAD</span>(&amp;ep-&gt;rdllist);<br><br>    <span class="hljs-comment">//初始化红黑树指针</span><br>    ep-&gt;rbr = RB_ROOT;<br><br>    ......<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>eventpoll 这个结构体中的几个成员的含义如下：</p>
+<ul>
+<li><strong>wq：</strong> 等待队列链表。软中断数据就绪的时候会通过 wq
+来找到阻塞在 epoll 对象上的用户进程。</li>
+<li><strong>rbr：</strong>
+红黑树。为了支持对海量连接的高效查找、插入和删除，eventpoll
+内部使用的就是红黑树。通过红黑树来管理用户主进程accept添加进来的所有
+socket 连接。</li>
+<li><strong>rdllist：</strong>
+就绪的描述符链表。当有连接就绪的时候，内核会把就绪的连接放到 rdllist
+链表里。这样应用进程只需要判断链表就能找出就绪进程，而不用去遍历红黑树的所有节点了。</li>
+</ul>
+<p><code>epoll_ctl 函数</code>:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">epoll_ctl</span><span class="hljs-params">(<span class="hljs-type">int</span> epfd, <span class="hljs-type">int</span> op, <span class="hljs-type">int</span> fd, <span class="hljs-keyword">struct</span> epoll_event *event)</span></span>; <br></code></pre></td></tr></table></figure>
+<figure>
+<img
+src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240403104959473.png" srcset="/img/loading.gif" lazyload
+alt="epoll_ctl" />
+<figcaption aria-hidden="true">epoll_ctl</figcaption>
+</figure>
+<h3 id="epoll的边缘触发与水平触发">epoll的边缘触发与水平触发</h3>
+<ol type="1">
+<li>水平触发：关注<code>数据有无</code>，只要读缓冲区不为空，写缓冲区不满，那么epoll_wait就会一直返回就绪，水平触发是epoll的默认工作方式。</li>
+<li>边缘触发：关注<code>变化</code>，只要缓冲区的数据有变化，epoll_wait就会返回就绪。这里的数据变化并不单纯指缓冲区从有数据变为没有数据，或者从没有数据变为有数据，还包括了数据变多或者变少。即当buffer长度有变化时，就会触发。假设epoll被设置为了边缘触发，当客户端写入了100个字符，由于缓冲区从0变为了100，于是服务端epoll_wait触发一次就绪，服务端读取了2个字节后不再读取。这个时候再去调用epoll_wait会发现不会就绪，只有当客户端再次写入数据后，才会触发就绪。这就导致如果使用ET模式，那就必须保证要「一次性把数据读取&amp;写入完」，否则会导致数据长期无法读取/写入。</li>
+</ol>
+<h2 id="epoll-为什么比selectpoll更高效">epoll
+为什么比select、poll更高效</h2>
+<ol type="1">
+<li>epoll
+采用<code>红黑树管理文件描述符</code>。红黑树插入和删除的都是时间复杂度
+O(logN)，不会随着文件描述符数量增加而改变。select、poll采用数组或者链表的形式管理文件描述符，那么在遍历文件描述符时，时间复杂度会随着文件描述的增加而增加。</li>
+<li>epoll
+将文件描述符<code>添加和检测分离</code>，减少了文件描述符拷贝的消耗。select&amp;poll
+调用时会将全部监听的 fd
+从用户态空间拷贝至内核态空间并线性扫描一遍找出就绪的 fd
+再返回到用户态。下次需要监听时，又需要把之前已经传递过的文件描述符再读传递进去，增加了拷贝文件的无效消耗，当文件描述很多时，性能瓶颈更加明显。而epoll只需要使用epoll_ctl添加一次，后续的检查使用epoll_wait，减少了文件拷贝的消耗。</li>
+</ol>
+<figure>
+<img
+src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240403105538695.png" srcset="/img/loading.gif" lazyload
+alt="select、poll和epoll对比" />
+<figcaption aria-hidden="true">select、poll和epoll对比</figcaption>
+</figure>
 <h1 id="redis">Redis</h1>
 <h2 id="缓存雪崩缓存穿透缓存击穿">缓存雪崩、缓存穿透、缓存击穿：</h2>
 <p><code>缓存雪崩：</code></p>
@@ -479,6 +529,53 @@ SHR 中。SHR
 的值不总是代表整个共享库都被常驻内存，因为有些程序可能只使用了库中的部分函数。只有实际被使用的部分才会被加载到内存中并计算到
 RES 中。</li>
 </ol>
+<h1 id="c">C++</h1>
+<h2 id="raii">RAII</h2>
+<p>由c++之父Bjarne
+Stroustrup提出的，中文翻译为<code>资源获取即初始化</code>，他说：使用局部对象来管理资源的技术称为资源获取即初始化；这里的资源主要是指操作系统中有限的东西如内存、网络套接字等等，局部对象是指存储在栈的对象，它的生命周期是由操作系统来管理的，无需人工介入；</p>
+<h2 id="智能指针">智能指针</h2>
+<p><code>定义</code>：智能指针就是管理动态分配的内存的，它会帮助我们自动释放new出来的内存，从而<strong>避免内存泄漏</strong>！</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp">std::unique_ptr&lt;T&gt;	独占资源所有权的指针<br>std::shared_ptr&lt;T&gt; 	共享资源所有权的指针<br>std::weak_ptr&lt;T&gt; 	共享资源的观察者，需要和 std::shared_ptr 一起使用，不影响资源的生命周期。<br></code></pre></td></tr></table></figure>
+<h1 id="mysql">MySQL</h1>
+<h2 id="事务">事务</h2>
+<p><code>定义</code>：一个操作，由多个步骤组成，要么全部成功，要么全部失败</p>
+<h2 id="数据库事务">数据库事务</h2>
+<p><code>定义</code>：对数据库的一系列操作组成的逻辑工作单元</p>
+<h3 id="四大特性acid">四大特性：ACID</h3>
+<ul>
+<li><code>原子性</code>：事务作为一个整体执行，包含在其中的对数据库的操作要么全部被执行，要么都不执行</li>
+<li><code>一致性</code>：确保事务将数据库从一种一致的状态转换成另一种一致的状态。即事务在执行前后，数据库必须满足一些预定义的一致性规则，如约束、触发器、级联等。如果事务执行后数据库不满足这些规则，则整个事务将被回滚</li>
+<li><code>隔离性</code>：多个事务并发执行时，一个事务的执行不影响其他事务的执行</li>
+<li><code>持久性</code>：已经被提交的事务对数据库的修改应该永久保留在数据库中</li>
+</ul>
+<h3 id="怎么保证四大特性">怎么保证四大特性？</h3>
+<figure>
+<img
+src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240403144057953.png" srcset="/img/loading.gif" lazyload
+alt="四大特性保证技术" />
+<figcaption aria-hidden="true">四大特性保证技术</figcaption>
+</figure>
+<h3
+id="事务并发问题严重性从前往后排">事务并发问题（严重性从前往后排）</h3>
+<ul>
+<li><code>脏读</code>：读取未提交数据</li>
+<li><code>不可重复读</code>：前后多次读取，数据内容不一致</li>
+<li><code>幻读</code>：同一个查询在不同时间产生不同的结果集</li>
+</ul>
+<h3
+id="事务隔离级别隔离级别越高性能效率越低">事务隔离级别（隔离级别越高，性能效率越低）</h3>
+<ol type="1">
+<li>读未提交</li>
+<li>读已提交</li>
+<li>可重复读</li>
+<li>串行化</li>
+</ol>
+<figure>
+<img
+src="https://typora-1306204209.cos.ap-nanjing.myqcloud.com/typora/image-20240403144914206.png" srcset="/img/loading.gif" lazyload
+alt="事务隔离级别" />
+<figcaption aria-hidden="true">事务隔离级别</figcaption>
+</figure>
 
                 
               </div>
@@ -522,7 +619,7 @@ RES 中。</li>
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年4月2日</div>
+          <div>2024年4月3日</div>
         </div>
       
       
